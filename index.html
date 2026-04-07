@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdConnect — Тестове завдання PMM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0e0f11; --surface: #161719; --border: #252729;
+  --text: #e8e6e0; --muted: #6b6966;
+  --green: #2ecc71; --gdim: #0a1e10;
+  --amber: #f5a623; --adim: #1a1200;
+  --blue: #4a9eff; --bdim: #08142a;
+  --red: #ff5f5f; --rdim: #1a0808;
+}
+body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; min-height: 100vh; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(14,15,17,0.95); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 52px;
+}
+.nav-logo {
+  font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+  font-weight: 500; color: var(--text); text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--green); }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
+  font-size: 12px; font-weight: 500; color: var(--muted);
+  text-decoration: none; padding: 6px 12px; border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.nav-links a:hover { color: var(--text); background: var(--surface); }
+.nav-links a.active { color: var(--text); background: var(--surface); }
+
+.hero {
+  padding: 120px 32px 80px;
+  max-width: 860px; margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  color: var(--green); letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--green);
+}
+h1 {
+  font-size: clamp(36px, 6vw, 64px); font-weight: 800;
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+h1 em { font-style: normal; color: var(--green); }
+.hero-sub {
+  font-size: 16px; color: var(--muted); line-height: 1.7;
+  max-width: 520px; margin-bottom: 48px;
+}
+
+.cards-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; max-width: 860px; margin: 0 auto 80px;
+  padding: 0 32px;
+}
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px;
+  text-decoration: none; color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.card:hover { border-color: #3a3d42; transform: translateY(-2px); }
+.card.featured { border-color: rgba(46,204,113,.3); }
+.card-num {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  color: var(--muted); letter-spacing: 0.1em;
+}
+.card.featured .card-num { color: var(--green); }
+.card-title { font-size: 16px; font-weight: 700; line-height: 1.3; }
+.card-desc { font-size: 12px; color: var(--muted); line-height: 1.6; flex: 1; }
+.card-links { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+.card-link {
+  font-size: 11px; font-family: 'IBM Plex Mono', monospace;
+  color: var(--muted); display: flex; align-items: center; gap: 6px;
+  text-decoration: none;
+}
+.card-link::before { content: '→'; color: var(--green); }
+.card-link:hover { color: var(--text); }
+.card-tag {
+  font-size: 10px; font-family: 'IBM Plex Mono', monospace;
+  padding: 3px 8px; border-radius: 4px; display: inline-block;
+  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  width: fit-content;
+}
+.tag-green { background: var(--gdim); color: var(--green); }
+.tag-blue  { background: var(--bdim); color: var(--blue); }
+.tag-amber { background: var(--adim); color: var(--amber); }
+
+.section-divider {
+  max-width: 860px; margin: 0 auto 40px; padding: 0 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-divider h2 { font-size: 14px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.footer {
+  border-top: 1px solid var(--border); padding: 24px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; font-family: 'IBM Plex Mono', monospace; color: var(--muted);
+  max-width: 860px; margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">AdConnect <span>PMM</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Головна</a>
+    <a href="tz01-overview.html">01 · Google Ads</a>
+    <a href="tz02-analytics.html">02 · Аналітика</a>
+    <a href="tz02-prototype.html">02 · Прототип</a>
+    <a href="tz03-dataset.html">03 · Датасет</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Тестове завдання · Product Marketing Manager</div>
+  <h1>AdConnect<br><em>Test Task</em></h1>
+  <p class="hero-sub">
+    Три завдання на позицію PMM: Google Ads інтеграція, аналіз продукту thedatingcritic.com та оптимізація офферів на основі реального датасету.
+  </p>
+</div>
+
+<div class="section-divider"><h2>Завдання 01</h2></div>
+
+<div class="cards-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 40px;">
+  <a class="card featured" href="tz01-overview.html">
+    <div class="card-num">01 · A</div>
+    <div class="card-tag tag-green">Схема інтеграції</div>
+    <div class="card-title">Google Ads Integration<br>Visual Overview</div>
+    <div class="card-desc">Два флоу (push + pull), ідентифікатори, підводні камені — все на одному екрані.</div>
+    <div class="card-links">
+      <span class="card-link">Схема + таблиці</span>
+    </div>
+  </a>
+  <a class="card" href="tz01-dev.html">
+    <div class="card-num">01 · B</div>
+    <div class="card-tag tag-blue">Dev Spec</div>
+    <div class="card-title">Технічне завдання<br>для розробників</div>
+    <div class="card-desc">5 фаз з Problem / Solve / Tips / Acceptance Criteria. Код і лінки на документацію.</div>
+    <div class="card-links">
+      <span class="card-link">Повне ТЗ з кодом</span>
+    </div>
+  </a>
+</div>
+
+<div class="section-divider"><h2>Завдання 02</h2></div>
+
+<div class="cards-grid" style="margin-bottom: 40px;">
+  <a class="card" href="tz02-analytics.html">
+    <div class="card-num">02 · A</div>
+    <div class="card-tag tag-amber">Unit Economics</div>
+    <div class="card-title">Аналіз перформансу</div>
+    <div class="card-desc">SimilarWeb дані + фанел + prediction по 3 сценаріях закупівлі. Реальні дані березень 2026.</div>
+    <div class="card-links">
+      <span class="card-link">Unit economics</span>
+    </div>
+  </a>
+  <a class="card" href="tz02-prototype.html">
+    <div class="card-num">02 · B</div>
+    <div class="card-tag tag-green">Прототип</div>
+    <div class="card-title">Продуктові механіки<br>для CR і LTV</div>
+    <div class="card-desc">Клікабельний прототип карток з badge системою, score breakdown і вкладками.</div>
+    <div class="card-links">
+      <span class="card-link">Score breakdown + tabs</span>
+      <span class="card-link">Achievement badges</span>
+    </div>
+  </a>
+  <a class="card" href="tz02-badges.html">
+    <div class="card-num">02 · C</div>
+    <div class="card-tag tag-green">Ideation</div>
+    <div class="card-title">Badge система<br>Full page</div>
+    <div class="card-desc">Повна сторінка з сайдбаром, фільтрами і картками з achievement badges замість рейтингів.</div>
+    <div class="card-links">
+      <span class="card-link">Повна сторінка</span>
+    </div>
+  </a>
+</div>
+
+<div class="section-divider"><h2>Завдання 03</h2></div>
+
+<div class="cards-grid" style="grid-template-columns: repeat(1, 1fr); margin-bottom: 60px; max-width: 860px;">
+  <a class="card" href="tz03-dataset.html">
+    <div class="card-num">03 · Датасет: Asian Dating Sites</div>
+    <div class="card-tag tag-blue">Cross Analytics</div>
+    <div class="card-title">4 POV аналізу одного датасету — перепріоритизація офферів</div>
+    <div class="card-desc">
+      EPC · Funnel combined · Cost per Engagement · Weighted Score. Знайдено що revenue = CPA ~$711–749/sale. Консенсусне ранжування по всіх метриках.
+    </div>
+    <div class="card-links">
+      <span class="card-link">EPC по офферах</span>
+      <span class="card-link">4 POV таблиці</span>
+      <span class="card-link">Зведені рекомендації</span>
+    </div>
+  </a>
+</div>
+
+<div class="footer">
+  <span>Сергій Дубей · PMM Test Task · Квітень 2026</span>
+  <span>AdConnect · appflame</span>
+</div>
+
+</body>
+</html>

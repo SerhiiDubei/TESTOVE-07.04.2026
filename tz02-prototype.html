@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Asian Dating Sites 2026 — TheDatingCritic — AdConnect PMM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f6f4f0;
+  --surface: #ffffff;
+  --border: #e6e2da;
+  --text: #1c1a17;
+  --muted: #8c897f;
+  --accent: #c0391a;
+  --accent-light: #fceee9;
+  --score-high: #1e7a45;
+  --score-high-bg: #eaf4ee;
+  --score-mid: #a05c10;
+  --score-mid-bg: #fdf3e7;
+  --score-low: #b52626;
+  --score-low-bg: #fdeaea;
+  --tag-bg: #edeae3;
+  --tag-text: #5c5950;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  padding: 72px 20px 60px;
+  min-height: 100vh;
+}
+
+/* PAGE HEADER */
+.page-wrap { max-width: 780px; margin: 0 auto; }
+
+.page-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.page-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.disclaimer {
+  padding: 10px 14px;
+  background: #fdf8ed;
+  border: 1px solid #e8d68a;
+  border-radius: 6px;
+  font-size: 11px;
+  color: #7a6310;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+/* CARD */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+.card:hover { box-shadow: 0 3px 20px rgba(0,0,0,0.07); }
+.card.top { border-color: #c0a87a; }
+
+.card-badge {
+  background: #1c1a17;
+  color: #f0edd8;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  text-align: center;
+}
+
+/* MAIN ROW */
+.card-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  min-height: 180px;
+}
+
+/* LEFT */
+.card-left {
+  padding: 20px 16px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.rank {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.card.top .rank { color: var(--accent); }
+
+.logo-box {
+  width: 96px;
+  height: 40px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: -0.01em;
+}
+
+.score-wrap { text-align: center; }
+.score-num {
+  font-family: 'Fraunces', serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+.score-word {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* RIGHT */
+.card-right { display: flex; flex-direction: column; }
+
+/* TABS */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  gap: 0;
+}
+
+.tab-btn {
+  padding: 12px 14px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--text); border-bottom-color: var(--text); font-weight: 600; }
+
+/* TAB PANELS */
+.tab-panel { display: none; padding: 18px 20px; flex: 1; }
+.tab-panel.active { display: flex; flex-direction: column; gap: 14px; }
+
+/* OVERVIEW PANEL */
+.card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.card-name {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.card-tagline { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+.cta-group { display: flex; flex-direction: column; gap: 6px; min-width: 130px; align-items: stretch; }
+.btn-primary {
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+  transition: background 0.15s;
+  text-decoration: none;
+  display: block;
+}
+.btn-primary:hover { background: #a32e14; }
+.btn-secondary {
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+  text-decoration: none;
+  display: block;
+}
+.btn-secondary:hover { border-color: var(--text); color: var(--text); }
+.deal-note { font-size: 11px; color: var(--accent); text-align: center; font-weight: 500; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+
+/* SCORES PANEL — color-coded */
+.scores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.score-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 7px;
+  background: var(--bg);
+}
+
+.score-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.dot-high { background: var(--score-high); }
+.dot-mid  { background: var(--score-mid);  }
+.dot-low  { background: var(--score-low);  }
+
+.score-item-label { font-size: 12px; color: var(--muted); flex: 1; }
+
+.score-pill {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.pill-high { background: var(--score-high-bg); color: var(--score-high); }
+.pill-mid  { background: var(--score-mid-bg);  color: var(--score-mid);  }
+.pill-low  { background: var(--score-low-bg);  color: var(--score-low);  }
+
+/* DETAILS PANEL */
+.details-list { display: flex; flex-direction: column; gap: 8px; }
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 13px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+.detail-row:last-child { border-bottom: none; padding-bottom: 0; }
+.detail-key { color: var(--muted); flex-shrink: 0; }
+.detail-val { color: var(--text); font-weight: 500; text-align: right; }
+
+/* PROS/CONS PANEL */
+.proscons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pc-col-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+.pc-col-label.pro { color: var(--score-high); }
+.pc-col-label.con { color: var(--score-low); }
+.pc-list { display: flex; flex-direction: column; gap: 6px; list-style: none; }
+.pc-list li {
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+.pc-list li::before {
+  font-size: 11px;
+  margin-top: 1px;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+.pc-list.pro li::before { content: '+'; color: var(--score-high); }
+.pc-list.con li::before { content: '−'; color: var(--score-low); }
+
+/* META ROW */
+.card-meta {
+  padding: 10px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--bg);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.meta-chip b { color: var(--text); font-weight: 500; }
+
+</style>
+</head>
+<body>
+
+<nav id="main-nav"></nav>
+<script src="nav.js"></script>
+
+<div class="page-wrap">
+
+  <div class="page-label">Asian Dating Sites · April 2026</div>
+  <h1>Best Asian Dating Sites<br>We've Tested</h1>
+  <p class="page-sub">Each site scored across 5 criteria. Tap the tabs to see breakdown, details, or pros & cons.</p>
+
+  <div class="disclaimer">
+    <strong>Advertising disclosure:</strong> We earn referral fees from partners. Listing order may be influenced, but scores are calculated independently per our editorial methodology.
+  </div>
+
+  <!-- ============ CARD 1 ============ -->
+  <div class="card top">
+    <div class="card-badge">Editor's Pick · Best Overall</div>
+    <div class="card-row">
+      <div class="card-left">
+        <span class="rank">#1</span>
+        <div class="logo-box">FeelsAsian</div>
+        <div class="score-wrap">
+          <div class="score-num">9.4</div>
+          <div class="score-word">Excellent</div>
+        </div>
+      </div>
+
+      <div class="card-right">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab(this,'fa','overview')">Overview</button>
+          <button class="tab-btn" onclick="switchTab(this,'fa','scores')">Scores</button>
+          <button class="tab-btn" onclick="switchTab(this,'fa','details')">Details</button>
+          <button class="tab-btn" onclick="switchTab(this,'fa','proscons')">Pros & Cons</button>
+        </div>
+
+        <!-- Overview -->
+        <div class="tab-panel active" id="fa-overview">
+          <div class="card-head">
+            <div>
+              <div class="card-name">FeelsAsian</div>
+              <div class="card-tagline">Large verified member base focused on Asian singles. Strong moderation and live chat tools.</div>
+            </div>
+            <div class="cta-group">
+              <a href="#" class="btn-primary">Visit Site →</a>
+              <a href="#" class="btn-secondary">Read Review</a>
+              <div class="deal-note">+20 free credits via our link</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Asian-focused</span>
+            <span class="tag">Verified profiles</span>
+            <span class="tag">Free to browse</span>
+            <span class="tag">Live chat</span>
+            <span class="tag">Credit-based</span>
+            <span class="tag">Best for serious dating</span>
+          </div>
+        </div>
+
+        <!-- Scores -->
+        <div class="tab-panel" id="fa-scores">
+          <div class="scores-grid">
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Profile quality</span>
+              <span class="score-pill pill-high">9.5</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Communication</span>
+              <span class="score-pill pill-high">9.2</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-mid"></div>
+              <span class="score-item-label">Value for money</span>
+              <span class="score-pill pill-mid">8.6</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Safety</span>
+              <span class="score-pill pill-high">9.6</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Ease of use</span>
+              <span class="score-pill pill-high">9.1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details -->
+        <div class="tab-panel" id="fa-details">
+          <div class="details-list">
+            <div class="detail-row"><span class="detail-key">Pricing model</span><span class="detail-val">Credit-based · from $15</span></div>
+            <div class="detail-row"><span class="detail-key">Member base</span><span class="detail-val">2M+ active profiles</span></div>
+            <div class="detail-row"><span class="detail-key">Best for</span><span class="detail-val">Serious relationships, Asian culture</span></div>
+            <div class="detail-row"><span class="detail-key">Free features</span><span class="detail-val">Browse, like, basic search</span></div>
+            <div class="detail-row"><span class="detail-key">Paid features</span><span class="detail-val">Messaging, video, gifts</span></div>
+            <div class="detail-row"><span class="detail-key">Mobile app</span><span class="detail-val">iOS & Android</span></div>
+          </div>
+        </div>
+
+        <!-- Pros/Cons -->
+        <div class="tab-panel" id="fa-proscons">
+          <div class="proscons">
+            <div>
+              <div class="pc-col-label pro">Pros</div>
+              <ul class="pc-list pro">
+                <li>Large verified member base</li>
+                <li>Strong safety & moderation</li>
+                <li>Good communication tools</li>
+                <li>Free to browse profiles</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pc-col-label con">Cons</div>
+              <ul class="pc-list con">
+                <li>Credits can get expensive</li>
+                <li>Pricing not shown upfront</li>
+                <li>Auto-renewal by default</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-meta">
+      <span class="meta-chip">Members: <b>2M+</b></span>
+      <span class="meta-chip">Pricing: <b>from $15</b></span>
+      <span class="meta-chip">User rating: <b>4.7 / 5</b></span>
+      <span class="meta-chip">Best for: <b>Serious dating</b></span>
+    </div>
+  </div>
+
+  <!-- ============ CARD 2 ============ -->
+  <div class="card">
+    <div class="card-row">
+      <div class="card-left">
+        <span class="rank">#2</span>
+        <div class="logo-box">ThaiDates</div>
+        <div class="score-wrap">
+          <div class="score-num">8.7</div>
+          <div class="score-word">Very Good</div>
+        </div>
+      </div>
+
+      <div class="card-right">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab(this,'td','overview')">Overview</button>
+          <button class="tab-btn" onclick="switchTab(this,'td','scores')">Scores</button>
+          <button class="tab-btn" onclick="switchTab(this,'td','details')">Details</button>
+          <button class="tab-btn" onclick="switchTab(this,'td','proscons')">Pros & Cons</button>
+        </div>
+
+        <div class="tab-panel active" id="td-overview">
+          <div class="card-head">
+            <div>
+              <div class="card-name">ThaiDates</div>
+              <div class="card-tagline">Niche platform for Thai singles. Active community, excellent live chat, competitive pricing.</div>
+            </div>
+            <div class="cta-group">
+              <a href="#" class="btn-primary">Visit Site →</a>
+              <a href="#" class="btn-secondary">Read Review</a>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Thailand-focused</span>
+            <span class="tag">Live chat</span>
+            <span class="tag">Mobile-friendly</span>
+            <span class="tag">Casual & serious</span>
+            <span class="tag">Credit-based</span>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="td-scores">
+          <div class="scores-grid">
+            <div class="score-item">
+              <div class="score-dot dot-mid"></div>
+              <span class="score-item-label">Profile quality</span>
+              <span class="score-pill pill-mid">8.4</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Communication</span>
+              <span class="score-pill pill-high">9.2</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Value for money</span>
+              <span class="score-pill pill-high">9.0</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-mid"></div>
+              <span class="score-item-label">Safety</span>
+              <span class="score-pill pill-mid">8.2</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Ease of use</span>
+              <span class="score-pill pill-high">8.8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="td-details">
+          <div class="details-list">
+            <div class="detail-row"><span class="detail-key">Pricing model</span><span class="detail-val">Credit-based · from $10</span></div>
+            <div class="detail-row"><span class="detail-key">Member base</span><span class="detail-val">500K+ active profiles</span></div>
+            <div class="detail-row"><span class="detail-key">Best for</span><span class="detail-val">Thai culture, casual & serious</span></div>
+            <div class="detail-row"><span class="detail-key">Free features</span><span class="detail-val">Browse, send likes</span></div>
+            <div class="detail-row"><span class="detail-key">Paid features</span><span class="detail-val">Chat, video calls, gifts</span></div>
+            <div class="detail-row"><span class="detail-key">Mobile app</span><span class="detail-val">Mobile browser only</span></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="td-proscons">
+          <div class="proscons">
+            <div>
+              <div class="pc-col-label pro">Pros</div>
+              <ul class="pc-list pro">
+                <li>Best value for money</li>
+                <li>Very active community</li>
+                <li>Excellent live chat tools</li>
+                <li>Affordable credits</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pc-col-label con">Cons</div>
+              <ul class="pc-list con">
+                <li>Fewer safety checks</li>
+                <li>No dedicated mobile app</li>
+                <li>Smaller member base</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-meta">
+      <span class="meta-chip">Members: <b>500K+</b></span>
+      <span class="meta-chip">Pricing: <b>from $10</b></span>
+      <span class="meta-chip">User rating: <b>4.1 / 5</b></span>
+      <span class="meta-chip">Best for: <b>Casual & serious</b></span>
+    </div>
+  </div>
+
+  <!-- ============ CARD 3 ============ -->
+  <div class="card">
+    <div class="card-row">
+      <div class="card-left">
+        <span class="rank">#3</span>
+        <div class="logo-box">DatingKorea</div>
+        <div class="score-wrap">
+          <div class="score-num">8.3</div>
+          <div class="score-word">Good</div>
+        </div>
+      </div>
+
+      <div class="card-right">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab(this,'dk','overview')">Overview</button>
+          <button class="tab-btn" onclick="switchTab(this,'dk','scores')">Scores</button>
+          <button class="tab-btn" onclick="switchTab(this,'dk','details')">Details</button>
+          <button class="tab-btn" onclick="switchTab(this,'dk','proscons')">Pros & Cons</button>
+        </div>
+
+        <div class="tab-panel active" id="dk-overview">
+          <div class="card-head">
+            <div>
+              <div class="card-name">DatingKorea</div>
+              <div class="card-tagline">Premium Korean-focused platform with thorough verification. Smaller but high-quality member base.</div>
+            </div>
+            <div class="cta-group">
+              <a href="#" class="btn-primary">Visit Site →</a>
+              <a href="#" class="btn-secondary">Read Review</a>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Korea-focused</span>
+            <span class="tag">Verified profiles</span>
+            <span class="tag">Culture-match</span>
+            <span class="tag">Serious relationships</span>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="dk-scores">
+          <div class="scores-grid">
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Profile quality</span>
+              <span class="score-pill pill-high">9.0</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-low"></div>
+              <span class="score-item-label">Communication</span>
+              <span class="score-pill pill-low">7.8</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-low"></div>
+              <span class="score-item-label">Value for money</span>
+              <span class="score-pill pill-low">7.6</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-high"></div>
+              <span class="score-item-label">Safety</span>
+              <span class="score-pill pill-high">9.2</span>
+            </div>
+            <div class="score-item">
+              <div class="score-dot dot-mid"></div>
+              <span class="score-item-label">Ease of use</span>
+              <span class="score-pill pill-mid">8.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="dk-details">
+          <div class="details-list">
+            <div class="detail-row"><span class="detail-key">Pricing model</span><span class="detail-val">Credit-based · from $20</span></div>
+            <div class="detail-row"><span class="detail-key">Member base</span><span class="detail-val">300K+ active profiles</span></div>
+            <div class="detail-row"><span class="detail-key">Best for</span><span class="detail-val">Korean culture, serious dating</span></div>
+            <div class="detail-row"><span class="detail-key">Free features</span><span class="detail-val">Browse profiles only</span></div>
+            <div class="detail-row"><span class="detail-key">Paid features</span><span class="detail-val">All messaging & interaction</span></div>
+            <div class="detail-row"><span class="detail-key">Mobile app</span><span class="detail-val">iOS only</span></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="dk-proscons">
+          <div class="proscons">
+            <div>
+              <div class="pc-col-label pro">Pros</div>
+              <ul class="pc-list pro">
+                <li>Highest profile quality</li>
+                <li>Excellent safety standards</li>
+                <li>Niche Korean community</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pc-col-label con">Cons</div>
+              <ul class="pc-list con">
+                <li>Most expensive credits</li>
+                <li>Limited communication tools</li>
+                <li>Smaller member base</li>
+                <li>iOS app only</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-meta">
+      <span class="meta-chip">Members: <b>300K+</b></span>
+      <span class="meta-chip">Pricing: <b>from $20</b></span>
+      <span class="meta-chip">User rating: <b>4.3 / 5</b></span>
+      <span class="meta-chip">Best for: <b>Serious relationships</b></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function switchTab(btn, cardId, panel) {
+  const card = btn.closest('.card-right');
+  card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  card.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(cardId + '-' + panel).classList.add('active');
+}
+</script>
+
+</body>
+</html>

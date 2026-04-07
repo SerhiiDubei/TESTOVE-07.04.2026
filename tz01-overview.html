@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Ads Integration Overview — AdConnect PMM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0f11;
+    --surface: #161719;
+    --border: #252729;
+    --text: #e8e6e0;
+    --muted: #6b6966;
+    --green: #2ecc71;
+    --green-dim: #1a3d2b;
+    --blue: #4a9eff;
+    --blue-dim: #0f2340;
+    --amber: #f5a623;
+    --amber-dim: #2d2010;
+    --red: #ff5f5f;
+    --red-dim: #2d1010;
+    --teal: #26d9c0;
+    --teal-dim: #0d2d2a;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 48px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+  .header-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+  }
+  .header h1 span { color: var(--green); }
+  .header-sub {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-label .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .badge-push { background: var(--green-dim); color: var(--green); }
+  .badge-pull { background: var(--blue-dim); color: var(--blue); }
+  .badge-warn { background: var(--red-dim); color: var(--red); }
+  .badge-ids  { background: var(--amber-dim); color: var(--amber); }
+
+  .section-label h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* FLOW DIAGRAM */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 12px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .flow-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    min-width: 130px;
+    flex-shrink: 0;
+  }
+  .flow-node.green  { border-color: var(--green); background: var(--green-dim); }
+  .flow-node.blue   { border-color: var(--blue);  background: var(--blue-dim);  }
+  .flow-node.amber  { border-color: var(--amber); background: var(--amber-dim); }
+  .flow-node.teal   { border-color: var(--teal);  background: var(--teal-dim);  }
+  .flow-node .node-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .flow-node.green  .node-title { color: var(--green); }
+  .flow-node.blue   .node-title { color: var(--blue);  }
+  .flow-node.amber  .node-title { color: var(--amber); }
+  .flow-node.teal   .node-title { color: var(--teal);  }
+  .flow-node .node-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .flow-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    flex-shrink: 0;
+  }
+  .flow-arrow .arrow-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 3px;
+    white-space: nowrap;
+  }
+  .flow-arrow .arrow-line {
+    width: 32px;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+  }
+  .flow-arrow .arrow-line::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -3px;
+    border: 4px solid transparent;
+    border-left: 5px solid var(--border);
+  }
+
+  .flow-down {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    padding-right: 0;
+  }
+  .flow-down-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .flow-down-line .vline {
+    width: 1px;
+    height: 28px;
+    background: var(--border);
+    position: relative;
+  }
+  .flow-down-line .vline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: -3px;
+    border: 4px solid transparent;
+    border-top: 5px solid var(--border);
+  }
+  .flow-down-line .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* CONNECTOR for return arrow */
+  .return-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .return-line {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 1;
+    padding-top: 20px;
+  }
+  .return-hline {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+  }
+  .return-vline {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+    align-self: flex-start;
+    margin-left: 20px;
+    position: relative;
+  }
+  .return-vline::after {
+    content:'';
+    position:absolute;
+    bottom:-4px;
+    left:-3px;
+    border:4px solid transparent;
+    border-top:5px solid var(--border);
+  }
+
+  /* DATA STORAGE */
+  .storage-box {
+    border: 1px solid var(--amber);
+    background: var(--amber-dim);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .storage-box .storage-title {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--amber);
+    margin-bottom: 6px;
+    white-space: nowrap;
+  }
+  .storage-col { flex: 1; }
+  .storage-col-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: rgba(245,166,35,0.1);
+    border: 1px solid rgba(245,166,35,0.25);
+    color: var(--amber);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .tag.highlight {
+    background: rgba(245,166,35,0.25);
+    border-color: var(--amber);
+    font-weight: 500;
+  }
+  .join-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(245,166,35,0.2);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+  }
+
+  /* WARNINGS */
+  .warnings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .warn-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    background: var(--surface);
+  }
+  .warn-card .warn-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .warn-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+  .warn-desc {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 10px;
+  }
+  .warn-fix {
+    font-size: 12px;
+    color: var(--green);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .warn-fix::before { content: '→ '; }
+
+  /* IDS TABLE */
+  .ids-section { margin: 32px 0; }
+  .ids-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .ids-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+  .ids-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .ids-table tr:last-child td { border-bottom: none; }
+  .ids-table tr:hover td { background: var(--surface); }
+  .mono { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--green); }
+  .td-muted { color: var(--muted); font-size: 12px; }
+
+  /* SECTION DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* LINKS */
+  .links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .link-pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--blue);
+    background: var(--blue-dim);
+    border: 1px solid rgba(74,158,255,0.25);
+    border-radius: 4px;
+    padding: 5px 12px;
+    text-decoration: none;
+  }
+  .link-pill:hover { border-color: var(--blue); }
+
+  @media print {
+    body { background: #fff; color: #000; padding: 24px; }
+    :root { --bg:#fff; --surface:#f5f5f5; --border:#ddd; --text:#111; --muted:#666;
+      --green:#1a8040; --green-dim:#edf7f0; --blue:#1a4f80; --blue-dim:#edf3fb;
+      --amber:#7a4f00; --amber-dim:#fef9ec; --red:#8f1f1f; --red-dim:#fef0f0;
+      --teal:#0d5e54; --teal-dim:#edfaf8;
+    }
+  }
+
+</style>
+</head>
+<body>
+<nav id="main-nav"></nav>
+<script src="nav.js"></script>
+<div class="header">
+  <div class="header-tag">Завдання 01 · AdConnect · Квітень 2026</div>
+  <h1>Google Ads<br><span>інтеграція</span></h1>
+  <div class="header-sub">два флоу · конверсії + статистика · data storage</div>
+</div>
+
+
+<!-- FLOW A -->
+<div class="section-label">
+  <span class="badge badge-push">Push</span>
+  <h2>Флоу A — передача конверсій</h2>
+</div>
+
+<div class="flow">
+  <div class="flow-node blue">
+    <div class="node-title">Google Ads</div>
+    <div class="node-sub">генерує gclid<br>в URL</div>
+  </div>
+  <div class="flow-arrow">
+    <span class="arrow-label">gclid</span>
+    <div class="arrow-line"></div>
+  </div>
+  <div class="flow-node green">
+    <div class="node-title">Наш сайт</div>
+    <div class="node-sub">зберігаємо gclid<br>cookie + localStorage</div>
+  </div>
+  <div class="flow-arrow">
+    <span class="arrow-label">клік</span>
+    <div class="arrow-line"></div>
+  </div>
+  <div class="flow-node green">
+    <div class="node-title">Клік на партнера</div>
+    <div class="node-sub">генеруємо click_id<br>пишемо click_id↔gclid</div>
+  </div>
+  <div class="flow-arrow">
+    <span class="arrow-label">subid=click_id</span>
+    <div class="arrow-line"></div>
+  </div>
+  <div class="flow-node">
+    <div class="node-title">Партнер</div>
+    <div class="node-sub">user реєструється<br>або купує кредити</div>
+  </div>
+</div>
+
+<!-- return arrow visual -->
+<div style="display:flex; align-items:stretch; gap:0; margin-bottom:8px; padding-left: 130px;">
+  <div style="flex:1; border-right:1px solid #252729; border-bottom:1px solid #252729; border-bottom-right-radius:6px; height:28px; margin-right:0;"></div>
+  <div style="writing-mode:vertical-rl; font-family:'IBM Plex Mono',monospace; font-size:10px; color:#6b6966; padding:0 6px; white-space:nowrap; transform:rotate(180deg);">постбек з click_id</div>
+</div>
+
+<div class="flow" style="margin-bottom:24px;">
+  <div class="flow-node green">
+    <div class="node-title">Наш бекенд</div>
+    <div class="node-sub">click_id → gclid<br>черга → sender</div>
+  </div>
+  <div class="flow-arrow">
+    <span class="arrow-label">gclid + value</span>
+    <div class="arrow-line"></div>
+  </div>
+  <div class="flow-node blue">
+    <div class="node-title">Google Ads API</div>
+    <div class="node-sub">upload_click_conversions<br>order_id = click_id</div>
+  </div>
+  <div class="flow-arrow">
+    <span class="arrow-label">також</span>
+    <div class="arrow-line"></div>
+  </div>
+  <div class="flow-node amber">
+    <div class="node-title">Data Storage</div>
+    <div class="node-sub">clicks · conversions<br>sessions</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FLOW B -->
+<div class="section-label">
+  <span class="badge badge-pull">Pull</span>
+  <h2>Флоу B — збір статистики</h2>
+</div>
+
+<div class="flow" style="margin-bottom:24px;">
+  <div class="flow-node blue">
+    <div class="node-title">Google Ads API</div>
+    <div class="node-sub">GAQL запит<br>по кампаніях/ключах</div>
+  </div>
+  <div class="flow-arrow">
+    <span class="arrow-label">щодня</span>
+    <div class="arrow-line"></div>
+  </div>
+  <div class="flow-node">
+    <div class="node-title">ETL</div>
+    <div class="node-sub">Airflow / cron<br>за вчорашній день</div>
+  </div>
+  <div class="flow-arrow">
+    <span class="arrow-label">stats</span>
+    <div class="arrow-line"></div>
+  </div>
+  <div class="flow-node amber">
+    <div class="node-title">Data Storage</div>
+    <div class="node-sub">campaign · date<br>cost · clicks</div>
+  </div>
+</div>
+
+<!-- STORAGE BOX -->
+<div class="storage-box">
+  <div>
+    <div class="storage-title">Data Storage</div>
+    <div class="join-note">Джойн: campaign_id + date → повна unit economics (spend + revenue)</div>
+  </div>
+  <div class="storage-col">
+    <div class="storage-col-label">Флоу A зберігає</div>
+    <div class="tag-list">
+      <span class="tag highlight">gclid</span>
+      <span class="tag highlight">click_id</span>
+      <span class="tag">session_id</span>
+      <span class="tag">partner_id</span>
+      <span class="tag">offer_id</span>
+      <span class="tag">conversion_type</span>
+      <span class="tag">value</span>
+      <span class="tag">clicked_at</span>
+    </div>
+  </div>
+  <div class="storage-col">
+    <div class="storage-col-label">Флоу B зберігає</div>
+    <div class="tag-list">
+      <span class="tag highlight">campaign_id</span>
+      <span class="tag highlight">date</span>
+      <span class="tag">ad_group_id</span>
+      <span class="tag">keyword_id</span>
+      <span class="tag">impressions</span>
+      <span class="tag">clicks</span>
+      <span class="tag highlight">cost_usd</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- IDENTIFIERS -->
+<div class="section-label">
+  <span class="badge badge-ids">IDs</span>
+  <h2>Ключові ідентифікатори</h2>
+</div>
+
+<table class="ids-table">
+  <thead>
+    <tr>
+      <th>Ідентифікатор</th>
+      <th>Звідки</th>
+      <th>Навіщо</th>
+      <th>TTL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="mono">gclid</span></td>
+      <td>URL параметр при кліку з реклами</td>
+      <td>Атрибуція конверсії в Google Ads</td>
+      <td class="td-muted">90 днів</td>
+    </tr>
+    <tr>
+      <td><span class="mono">click_id</span></td>
+      <td>Генеруємо при кліку на партнера</td>
+      <td>Ключ матчингу постбека з gclid</td>
+      <td class="td-muted">постійно</td>
+    </tr>
+    <tr>
+      <td><span class="mono">session_id</span></td>
+      <td>При вході на сайт</td>
+      <td>Зв'язок gclid → click_id якщо user зайшов раніше</td>
+      <td class="td-muted">30 хв</td>
+    </tr>
+    <tr>
+      <td><span class="mono">hashed_email</span></td>
+      <td>SHA-256 при реєстрації</td>
+      <td>Enhanced Conversions — fallback якщо gclid втрачено</td>
+      <td class="td-muted">постійно</td>
+    </tr>
+    <tr>
+      <td><span class="mono">campaign_id + date</span></td>
+      <td>Google Ads API (Флоу B)</td>
+      <td>Ключ джойну spend ↔ revenue для unit economics</td>
+      <td class="td-muted">∞</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="divider">
+
+<!-- WARNINGS -->
+<div class="section-label">
+  <span class="badge badge-warn">Підводні камені</span>
+  <h2>Що може піти не так</h2>
+</div>
+
+<div class="warnings-grid">
+  <div class="warn-card">
+    <div class="warn-title"><span class="warn-dot"></span>GCLID губиться</div>
+    <div class="warn-desc">Інкогніто, Safari ITP, зміна браузера — gclid в cookie зникає</div>
+    <div class="warn-fix">Enhanced Conversions: передаємо hashed_email як user_identifier</div>
+  </div>
+  <div class="warn-card">
+    <div class="warn-title"><span class="warn-dot"></span>Постбек із затримкою</div>
+    <div class="warn-desc">Партнер може надіслати конверсію через 7–30 днів після кліку</div>
+    <div class="warn-fix">Offline Conversion API підтримує дату до 90 днів назад</div>
+  </div>
+  <div class="warn-card">
+    <div class="warn-title"><span class="warn-dot"></span>Дублікати</div>
+    <div class="warn-desc">Постбек може прийти двічі (мережеві збої, ретраї партнера)</div>
+    <div class="warn-fix">Передаємо order_id = click_id — Google Ads ігнорує дублі</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- LINKS -->
+<div class="section-label">
+  <span class="badge badge-pull">Docs</span>
+  <h2>Документація</h2>
+</div>
+<div class="links-row">
+  <a class="link-pill" href="https://developers.google.com/google-ads/api/docs/conversion-tracking/upload-clicks">Conversion Upload API</a>
+  <a class="link-pill" href="https://developers.google.com/google-ads/api/docs/conversions/enhanced-conversions/leads">Enhanced Conversions</a>
+  <a class="link-pill" href="https://developers.google.com/google-ads/api/docs/query/overview">GAQL — Query Language</a>
+  <a class="link-pill" href="https://github.com/googleads/google-ads-python">Python Client Library</a>
+</div>
+</body>
+</html>

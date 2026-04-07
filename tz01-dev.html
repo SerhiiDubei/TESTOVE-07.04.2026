@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Spec — Google Ads Integration — AdConnect PMM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0e0f11;
+    --surface: #161719;
+    --surface2: #1c1e20;
+    --border: #252729;
+    --text: #e8e6e0;
+    --muted: #6b6966;
+    --green: #2ecc71;
+    --green-dim: #0d2318;
+    --blue: #4a9eff;
+    --blue-dim: #0a1a2d;
+    --amber: #f5a623;
+    --amber-dim: #1f1608;
+    --red: #ff5f5f;
+    --red-dim: #1f0a0a;
+    --purple: #a78bfa;
+    --purple-dim: #1a1230;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 48px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .doc-header {
+    margin-bottom: 52px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 16px;
+  }
+  .doc-tag span { color: var(--green); }
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  h1 em { font-style: normal; color: var(--green); }
+  .doc-scope {
+    color: var(--muted);
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 52px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 20px;
+  }
+  .section-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .section-header .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .badge-blue   { background: var(--blue-dim);   color: var(--blue);   border: 1px solid rgba(74,158,255,.2); }
+  .badge-green  { background: var(--green-dim);  color: var(--green);  border: 1px solid rgba(46,204,113,.2); }
+  .badge-amber  { background: var(--amber-dim);  color: var(--amber);  border: 1px solid rgba(245,166,35,.2); }
+  .badge-purple { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(167,139,250,.2); }
+  .badge-red    { background: var(--red-dim);    color: var(--red);    border: 1px solid rgba(255,95,95,.2); }
+
+  /* TASK BLOCK */
+  .task {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .task-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .task-phase {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .task-body { padding: 0; }
+
+  /* PROBLEM / SOLVE */
+  .ps-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .ps-row:last-child { border-bottom: none; }
+  .ps-cell { padding: 16px 20px; }
+  .ps-cell:first-child { border-right: 1px solid var(--border); }
+  .ps-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .ps-label.problem { color: var(--red); }
+  .ps-label.solve   { color: var(--green); }
+  .ps-text { font-size: 13px; color: var(--text); line-height: 1.6; }
+  .ps-text .mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--blue);
+    background: var(--blue-dim);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .ps-text .mono-green {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--green);
+    background: var(--green-dim);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* CODE BLOCK */
+  .code-wrap {
+    background: #0a0b0d;
+    border-top: 1px solid var(--border);
+    padding: 14px 20px;
+  }
+  .code-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  pre {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: #a8c8a0;
+    line-height: 1.7;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  pre .c { color: #4a5568; }
+  pre .k { color: var(--blue); }
+  pre .s { color: #f6ad55; }
+  pre .v { color: var(--green); }
+  pre .p { color: var(--amber); }
+
+  /* TIPS */
+  .tips-wrap {
+    background: var(--purple-dim);
+    border: 1px solid rgba(167,139,250,.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 8px;
+  }
+  .tips-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .tips-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .tips-list li {
+    font-size: 13px;
+    color: #c4b5fd;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .tips-list li::before {
+    content: '↳';
+    position: absolute;
+    left: 0;
+    color: var(--purple);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .tips-list li .mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: rgba(167,139,250,.15);
+    color: var(--purple);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ACCEPTANCE CRITERIA */
+  .ac-wrap {
+    margin-top: 8px;
+    border: 1px solid rgba(46,204,113,.2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .ac-header {
+    background: var(--green-dim);
+    padding: 10px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(46,204,113,.15);
+  }
+  .ac-list { list-style: none; }
+  .ac-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .ac-list li:last-child { border-bottom: none; }
+  .ac-check {
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgba(46,204,113,.4);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background: var(--green-dim);
+  }
+  .ac-list li .mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    background: #0d2318;
+    color: var(--green);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  /* LINK */
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .doc-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+  }
+
+</style>
+</head>
+<body>
+<nav id="main-nav"></nav>
+<script src="nav.js"></script>
+<div class="doc-header">
+  <div class="doc-tag">
+    AdConnect · Завдання 01
+    <span>Dev Spec</span>
+    · Квітень 2026
+  </div>
+  <h1>Google Ads<br><em>інтеграція</em></h1>
+  <div class="doc-scope">scope: backend · frontend snippet · ETL · два незалежних флоу</div>
+</div>
+
+
+<!-- === PHASE 1 === -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Захоплення GCLID</h2>
+    <span class="badge badge-blue">Frontend</span>
+    <span class="task-phase">~1 день</span>
+  </div>
+
+  <div class="task">
+    <div class="task-header">
+      <span class="task-title">Зберегти gclid при вході на сайт</span>
+    </div>
+    <div class="task-body">
+      <div class="ps-row">
+        <div class="ps-cell">
+          <div class="ps-label problem">Problem</div>
+          <div class="ps-text">Коли user клікає рекламу в Google, в URL з'являється <span class="mono">gclid=CjwK...</span>. Якщо ми його не збережемо одразу — він зникне при першому переході. Без нього не можна атрибутувати конверсію.</div>
+        </div>
+        <div class="ps-cell">
+          <div class="ps-label solve">Solve</div>
+          <div class="ps-text">При завантаженні кожної сторінки читаємо <span class="mono">gclid</span> з URL. Якщо є — пишемо в <span class="mono-green">localStorage</span> і <span class="mono-green">cookie</span> (TTL 90 днів). Cookie — fallback для Safari ITP.</div>
+        </div>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Приклад · front-end snippet</div>
+<pre><span class="c">// gclid-tracker.js — підключити на кожній сторінці</span>
+<span class="k">const</span> params = <span class="k">new</span> URLSearchParams(window.location.search);
+<span class="k">const</span> gclid = params.get(<span class="s">'gclid'</span>);
+
+<span class="k">if</span> (gclid) {
+  localStorage.setItem(<span class="s">'gclid_data'</span>, JSON.stringify({
+    <span class="v">gclid</span>: gclid,
+    <span class="v">captured_at</span>: Date.now(),
+    <span class="v">landing</span>: window.location.pathname
+  }));
+  <span class="c">// cookie — fallback Safari / iOS</span>
+  document.cookie = <span class="s">`gclid=<span class="p">${gclid}</span>; max-age=<span class="p">${90*86400}</span>; path=/; SameSite=Lax`</span>;
+}</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-wrap">
+    <div class="tips-label">Tips</div>
+    <ul class="tips-list">
+      <li>Не перезаписуй gclid якщо він вже є і не старіший 90 днів — перший клік завжди пріоритетніший.</li>
+      <li>Разом з gclid зберігай <span class="mono">utm_campaign</span>, <span class="mono">utm_medium</span> — знадобляться для зведення аналітики.</li>
+      <li>Перевір що скрипт є на всіх лендінгах, не тільки на головній.</li>
+    </ul>
+  </div>
+
+  <div class="ac-wrap" style="margin-top:12px;">
+    <div class="ac-header">Acceptance criteria</div>
+    <ul class="ac-list">
+      <li><span class="ac-check"></span>При кліку з Google Ads gclid зберігається в <span class="mono">localStorage</span> і cookie.</li>
+      <li><span class="ac-check"></span>Якщо gclid в URL немає — нічого не перезаписується.</li>
+      <li><span class="ac-check"></span>TTL cookie = 90 днів.</li>
+      <li><span class="ac-check"></span>Разом з gclid зберігаються <span class="mono">utm_campaign</span>, <span class="mono">utm_medium</span>, <span class="mono">landing_page</span>.</li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<!-- === PHASE 2 === -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Трекінг кліку на партнера</h2>
+    <span class="badge badge-green">Backend</span>
+    <span class="task-phase">~1–2 дні</span>
+  </div>
+
+  <div class="task">
+    <div class="task-header">
+      <span class="task-title">Генерувати click_id і передавати його партнеру як subid</span>
+    </div>
+    <div class="task-body">
+      <div class="ps-row">
+        <div class="ps-cell">
+          <div class="ps-label problem">Problem</div>
+          <div class="ps-text">Коли user клікає "Visit Site" — він йде на партнера. Ми не знаємо хто саме перейшов і не можемо зматчити майбутній постбек з нашим gclid.</div>
+        </div>
+        <div class="ps-cell">
+          <div class="ps-label solve">Solve</div>
+          <div class="ps-text">Перед редиректом генеруємо <span class="mono-green">click_id</span>, зберігаємо пару <span class="mono-green">click_id ↔ gclid</span> в БД, і передаємо <span class="mono-green">click_id</span> партнеру через параметр <span class="mono">subid</span> у посиланні.</div>
+        </div>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Приклад · POST /api/click/track</div>
+<pre><span class="c"># Request</span>
+POST /api/click/track
+{
+  <span class="s">"session_id"</span>: <span class="s">"sess_abc"</span>,
+  <span class="s">"partner_id"</span>: <span class="s">"japandates"</span>,
+  <span class="s">"offer_id"</span>:  <span class="s">"asian_main"</span>,
+  <span class="s">"destination_url"</span>: <span class="s">"https://japandates.com"</span>
+}
+
+<span class="c"># Server logic</span>
+click_id = uuid()
+gclid    = db.sessions.get(session_id).gclid
+
+db.clicks.insert({
+  <span class="v">click_id</span>, <span class="v">gclid</span>, <span class="v">partner_id</span>, <span class="v">offer_id</span>, <span class="v">clicked_at</span>: now()
+})
+
+<span class="c"># Response — фронт редиректить на цей URL</span>
+{ <span class="s">"redirect_url"</span>: <span class="s">"https://japandates.com?subid=<span class="p">{click_id}</span>"</span> }</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-wrap">
+    <div class="tips-label">Tips</div>
+    <ul class="tips-list">
+      <li>Назва параметра залежить від партнера: може бути <span class="mono">subid</span>, <span class="mono">s1</span>, <span class="mono">aff_sub</span> — уточни у кожного партнера.</li>
+      <li>Зберігай <span class="mono">offer_id</span> і <span class="mono">partner_id</span> окремо — знадобиться для аналітики яка позиція конвертує краще.</li>
+      <li>Redis для lookup <span class="mono">session_id → gclid</span> — швидше ніж йти в PostgreSQL на кожен клік.</li>
+    </ul>
+  </div>
+
+  <div class="ac-wrap" style="margin-top:12px;">
+    <div class="ac-header">Acceptance criteria</div>
+    <ul class="ac-list">
+      <li><span class="ac-check"></span>Кожен клік на партнерський лінк створює запис в таблиці <span class="mono">clicks</span>.</li>
+      <li><span class="ac-check"></span>В записі є <span class="mono">click_id</span>, <span class="mono">gclid</span>, <span class="mono">partner_id</span>, <span class="mono">offer_id</span>, <span class="mono">clicked_at</span>.</li>
+      <li><span class="ac-check"></span>Redirect URL містить <span class="mono">click_id</span> як subid параметр.</li>
+      <li><span class="ac-check"></span>Якщо gclid не знайдено — клік все одно фіксується, gclid = null.</li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<!-- === PHASE 3 === -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Обробка постбека від партнера</h2>
+    <span class="badge badge-green">Backend</span>
+    <span class="task-phase">~1–2 дні</span>
+  </div>
+
+  <div class="task">
+    <div class="task-header">
+      <span class="task-title">Прийняти постбек, зматчити з gclid, поставити в чергу</span>
+    </div>
+    <div class="task-body">
+      <div class="ps-row">
+        <div class="ps-cell">
+          <div class="ps-label problem">Problem</div>
+          <div class="ps-text">Партнер надсилає POST/GET на наш endpoint коли user конвертує. Нам треба прийняти це, знайти gclid по <span class="mono">click_id</span> і не загубити якщо Google Ads API тимчасово недоступний.</div>
+        </div>
+        <div class="ps-cell">
+          <div class="ps-label solve">Solve</div>
+          <div class="ps-text">Endpoint приймає постбек, одразу відповідає <span class="mono-green">200 OK</span> партнеру, асинхронно кладе задачу в чергу. Worker окремо підбирає і відправляє в Google Ads.</div>
+        </div>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Приклад · GET /postback</div>
+<pre><span class="c"># Партнер надсилає</span>
+GET /postback?click_id=<span class="v">clk_abc123</span>&type=<span class="v">registration</span>&value=<span class="v">0</span>
+
+<span class="c"># Server logic</span>
+click   = db.clicks.get(click_id=<span class="s">"clk_abc123"</span>)
+gclid   = click.gclid  <span class="c"># може бути None якщо не зберегли</span>
+
+db.conversions.insert({
+  <span class="v">click_id</span>, <span class="v">gclid</span>,
+  <span class="v">type</span>: <span class="s">"registration"</span>,
+  <span class="v">value</span>: 0, <span class="v">status</span>: <span class="s">"pending"</span>
+})
+
+<span class="c"># Кладемо в чергу (SQS / RabbitMQ)</span>
+queue.send({ <span class="s">"task"</span>: <span class="s">"send_to_gads"</span>, <span class="s">"click_id"</span>: <span class="s">"clk_abc123"</span> })
+
+<span class="k">return</span> <span class="s">"OK"</span>, 200  <span class="c"># відповідаємо партнеру одразу</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-wrap">
+    <div class="tips-label">Tips</div>
+    <ul class="tips-list">
+      <li>Відповідай партнеру <span class="mono">200 OK</span> одразу — не чекай поки відправимо в Google Ads. Якщо відповідь затримається, партнер буде слати повторно.</li>
+      <li>Зберігай сирий постбек цілком (<span class="mono">raw_payload</span>) — знадобиться для дебагу.</li>
+      <li>Перевіряй <span class="mono">click_id</span> на існування перед записом — якщо click не знайдено, лог + ігнорувати (не падати з 500).</li>
+    </ul>
+  </div>
+
+  <div class="ac-wrap" style="margin-top:12px;">
+    <div class="ac-header">Acceptance criteria</div>
+    <ul class="ac-list">
+      <li><span class="ac-check"></span>Endpoint відповідає <span class="mono">200 OK</span> протягом 200ms незалежно від стану Google Ads API.</li>
+      <li><span class="ac-check"></span>Конверсія зберігається в <span class="mono">conversions</span> зі статусом <span class="mono">pending</span>.</li>
+      <li><span class="ac-check"></span>Задача потрапляє в чергу одразу після запису.</li>
+      <li><span class="ac-check"></span>Якщо <span class="mono">click_id</span> не знайдено — повертаємо <span class="mono">200</span>, пишемо в лог, не падаємо.</li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<!-- === PHASE 4 === -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Відправка конверсії в Google Ads</h2>
+    <span class="badge badge-green">Backend · Worker</span>
+    <span class="task-phase">~2 дні</span>
+  </div>
+
+  <div class="task">
+    <div class="task-header">
+      <span class="task-title">Worker читає чергу і відправляє в Google Ads Conversions API</span>
+    </div>
+    <div class="task-body">
+      <div class="ps-row">
+        <div class="ps-cell">
+          <div class="ps-label problem">Problem</div>
+          <div class="ps-text">Google Ads оптимізує покази тільки якщо бачить конверсії. Без передачі — алгоритм сліпий, ми платимо за кліки які не конвертують.</div>
+        </div>
+        <div class="ps-cell">
+          <div class="ps-label solve">Solve</div>
+          <div class="ps-text">Worker підбирає задачі з черги, по <span class="mono">click_id</span> знаходить <span class="mono-green">gclid</span>, формує запит до <span class="mono-green">ConversionUploadService</span> і відправляє. Дедуплікація через <span class="mono-green">order_id</span>.</div>
+        </div>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Приклад · Python · google-ads-python</div>
+<pre><span class="k">from</span> google.ads.googleads.client <span class="k">import</span> GoogleAdsClient
+
+client = GoogleAdsClient.load_from_env()
+
+click_conversion = client.get_type(<span class="s">'ClickConversion'</span>)
+click_conversion.gclid                 = <span class="v">gclid</span>
+click_conversion.conversion_action     = <span class="s">"customers/<span class="p">{CID}</span>/conversionActions/<span class="p">{AID}</span>"</span>
+click_conversion.conversion_date_time  = <span class="s">"2025-04-01 14:00:00+02:00"</span>
+click_conversion.conversion_value      = <span class="v">value</span>   <span class="c"># 0 для registration</span>
+click_conversion.order_id              = <span class="v">click_id</span> <span class="c"># дедуплікація!</span>
+
+service = client.get_service(<span class="s">'ConversionUploadService'</span>)
+service.upload_click_conversions(
+  customer_id=<span class="v">CUSTOMER_ID</span>,
+  conversions=[click_conversion],
+  partial_failure=<span class="k">True</span>
+)
+
+<span class="c"># Docs: developers.google.com/google-ads/api/docs/conversion-tracking/upload-clicks</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-wrap">
+    <div class="tips-label">Tips</div>
+    <ul class="tips-list">
+      <li><span class="mono">order_id = click_id</span> — Google Ads ігнорує дублікати по order_id. Без цього одна конверсія може порахуватись двічі.</li>
+      <li>Якщо gclid = null — спробуй Enhanced Conversions: передай SHA-256 хеш email користувача як <span class="mono">user_identifier</span>. Google сам заматчить. <a class="doc-link" href="https://developers.google.com/google-ads/api/docs/conversions/enhanced-conversions/leads">Docs →</a></li>
+      <li>Постбек може прийти через 30 днів — API підтримує backdated conversions до 90 днів. Просто передай реальну дату конверсії.</li>
+      <li>Встав <span class="mono">partial_failure=True</span> — інакше одна помилка вб'є весь батч.</li>
+    </ul>
+  </div>
+
+  <div class="ac-wrap" style="margin-top:12px;">
+    <div class="ac-header">Acceptance criteria</div>
+    <ul class="ac-list">
+      <li><span class="ac-check"></span>Worker обробляє задачу з черги і відправляє конверсію в Google Ads.</li>
+      <li><span class="ac-check"></span>Після успіху статус конверсії в БД змінюється на <span class="mono">sent</span>.</li>
+      <li><span class="ac-check"></span>При помилці — статус <span class="mono">failed</span>, retry через 5 хв (max 3 спроби).</li>
+      <li><span class="ac-check"></span>Дублікат постбека не створює дублікат конверсії в Google Ads (<span class="mono">order_id</span> перевірено).</li>
+      <li><span class="ac-check"></span>Якщо gclid = null — спроба Enhanced Conversions, лог результату.</li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<!-- === PHASE 5 === -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2>ETL: збір статистики з Google Ads</h2>
+    <span class="badge badge-amber">ETL · Флоу B</span>
+    <span class="task-phase">~1–2 дні</span>
+  </div>
+
+  <div class="task">
+    <div class="task-header">
+      <span class="task-title">Щодня тягнути витрати з кабінету в data storage</span>
+    </div>
+    <div class="task-body">
+      <div class="ps-row">
+        <div class="ps-cell">
+          <div class="ps-label problem">Problem</div>
+          <div class="ps-text">Ми знаємо revenue (з постбеків), але не знаємо spend. Без витрат неможливо порахувати ROAS, CAC і вирішити чи прибуткова закупівля взагалі.</div>
+        </div>
+        <div class="ps-cell">
+          <div class="ps-label solve">Solve</div>
+          <div class="ps-text">Щоденний cron-job тягне статистику по кампаніях/ключах через <span class="mono-green">GAQL</span> і зберігає в таблицю <span class="mono-green">google_ads_stats</span>. Джойн з <span class="mono-green">clicks</span> по <span class="mono">campaign_id + date</span> дає повну картину.</div>
+        </div>
+      </div>
+      <div class="code-wrap">
+        <div class="code-label">Приклад · GAQL запит</div>
+<pre><span class="c">-- Запускати щодня, date = вчора</span>
+SELECT
+  campaign.id,
+  campaign.name,
+  ad_group.id,
+  segments.keyword.info.text,
+  segments.date,
+  metrics.impressions,
+  metrics.clicks,
+  metrics.cost_micros        <span class="c">-- divide by 1_000_000 → USD</span>
+FROM keyword_view
+WHERE segments.date = <span class="s">'<span class="p">{yesterday}</span>'</span>
+  AND campaign.status = <span class="s">'ENABLED'</span>
+
+<span class="c">-- Docs: developers.google.com/google-ads/api/docs/query/overview</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-wrap">
+    <div class="tips-label">Tips</div>
+    <ul class="tips-list">
+      <li>Зберігай <span class="mono">campaign_id + date</span> як composite key — це ключ для джойну з даними конверсій.</li>
+      <li>Дані в Google Ads затримуються на ~3 години. Запускай ETL не раніше ніж о 6:00 ранку для вчорашнього дня.</li>
+      <li>Якщо є кілька Google Ads акаунтів — використовуй MCC (Manager Account) і перебирай customer_ids в циклі.</li>
+    </ul>
+  </div>
+
+  <div class="ac-wrap" style="margin-top:12px;">
+    <div class="ac-header">Acceptance criteria</div>
+    <ul class="ac-list">
+      <li><span class="ac-check"></span>ETL запускається щодня о 06:00 UTC і тягне дані за вчора.</li>
+      <li><span class="ac-check"></span>Таблиця <span class="mono">google_ads_stats</span> містить: <span class="mono">campaign_id</span>, <span class="mono">ad_group_id</span>, <span class="mono">keyword</span>, <span class="mono">date</span>, <span class="mono">impressions</span>, <span class="mono">clicks</span>, <span class="mono">cost_usd</span>.</li>
+      <li><span class="ac-check"></span>Повторний запуск за той самий день не дублює дані (upsert по <span class="mono">campaign_id + date</span>).</li>
+      <li><span class="ac-check"></span>Джойн <span class="mono">google_ads_stats.campaign_id + date</span> з таблицею конверсій повертає коректний ROAS.</li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<!-- === DB SCHEMA === -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2>Мінімальна схема БД</h2>
+    <span class="badge badge-purple">PostgreSQL</span>
+  </div>
+
+  <div class="task">
+    <div class="task-body">
+      <div class="code-wrap" style="border-top:none;">
+<pre>sessions    (session_id PK, <span class="v">gclid</span>, utm_campaign, landing_page, created_at)
+clicks      (click_id PK,   <span class="v">session_id FK</span>, <span class="v">gclid</span>, partner_id, offer_id, clicked_at)
+conversions (conv_id PK,    <span class="v">click_id FK</span>,  <span class="v">gclid</span>, type, value, status, received_at, sent_at)
+
+google_ads_stats (<span class="v">campaign_id</span>, ad_group_id, keyword, <span class="v">date</span>,
+                  impressions, clicks, cost_usd, fetched_at)
+<span class="c">-- PK: campaign_id + date (upsert)</span>
+
+<span class="c">-- Ключовий джойн для unit economics:</span>
+<span class="c">-- google_ads_stats JOIN clicks ON campaign_id + date = gclid date</span></pre>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Asian Dating Sites 2026 — AdConnect PMM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f2f0ec;
+  --surface: #ffffff;
+  --border: #e2ddd6;
+  --text: #1a1815;
+  --muted: #9a9790;
+  --accent: #bf3a1c;
+  --green: #1c7a42;
+  --green-bg: #e8f5ee;
+  --blue: #1a5fa5;
+  --blue-bg: #e8f0fa;
+  --amber: #a05c10;
+  --amber-bg: #faf0e2;
+  --coral: #c0391a;
+  --coral-bg: #faeae6;
+  --inactive: #d8d4cc;
+  --inactive-text: #b0aba2;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* TOP NAV */
+.nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 52px;
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 24px; }
+.nav-links a {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--text); border-bottom: 2px solid var(--text); padding-bottom: 2px; }
+
+/* HERO */
+.hero {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 36px 32px 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.hero-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+/* MAIN */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 0 60px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+}
+.sidebar-section { margin-bottom: 24px; }
+.sidebar-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  padding: 0 4px;
+}
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text);
+  transition: background 0.12s;
+  margin-bottom: 2px;
+}
+.filter-item:hover { background: var(--surface); }
+.filter-item.active { background: var(--surface); font-weight: 500; }
+.filter-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* CARDS AREA */
+.cards-area { flex: 1; min-width: 0; }
+
+.disclaimer {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.disclaimer b { color: var(--text); }
+
+/* CARD */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+.card.top { border-top: 3px solid var(--accent); }
+
+/* CARD HEADER */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 0;
+}
+.card-rank-name { display: flex; align-items: center; gap: 10px; }
+.rank-badge {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  flex-shrink: 0;
+}
+.card.top .rank-badge { background: var(--accent); color: #fff; }
+.card-name {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+.editor-pick {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: #faeae6;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+/* CARD BODY */
+.card-body {
+  padding: 14px 20px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: start;
+}
+
+.card-left { min-width: 0; }
+
+.card-tagline {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* BADGES */
+.badges-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 64px;
+  cursor: default;
+}
+.badge:hover .badge-ring-inner { transform: scale(1.05); }
+
+.badge-ring {
+  position: relative;
+  width: 54px;
+  height: 54px;
+}
+.badge-ring svg.ring-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 54px; height: 54px;
+}
+.badge-ring-inner {
+  position: absolute;
+  top: 5px; left: 5px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+.badge-ring-inner.green { background: var(--green-bg); }
+.badge-ring-inner.blue  { background: var(--blue-bg);  }
+.badge-ring-inner.amber { background: var(--amber-bg); }
+.badge-ring-inner.coral { background: var(--coral-bg); }
+.badge-ring-inner.inactive { background: #f0ede8; }
+
+.badge-label {
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.3;
+  color: var(--text);
+  font-weight: 500;
+}
+.badge-label.inactive { color: var(--inactive-text); }
+
+/* CARD RIGHT */
+.card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 130px;
+}
+
+.score-wrap { text-align: center; margin-bottom: 4px; }
+.score-num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+.score-stars {
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+  margin: 4px 0;
+}
+.star {
+  width: 11px; height: 11px;
+  background: #c8a030;
+  clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.star.half { background: linear-gradient(90deg, #c8a030 50%, #e0dbd2 50%); }
+.star.empty { background: #e0dbd2; }
+.score-word { font-size: 11px; color: var(--muted); font-weight: 500; }
+
+.btn-visit {
+  width: 100%;
+  padding: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.13s;
+  letter-spacing: 0.01em;
+}
+.btn-visit:hover { background: #a02f16; }
+
+.btn-review {
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.13s, color 0.13s;
+}
+.btn-review:hover { border-color: var(--text); color: var(--text); }
+
+.deal-tag {
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 500;
+  background: var(--green-bg);
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+/* CARD FOOTER */
+.card-footer {
+  border-top: 1px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.meta-pill {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--bg);
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+.meta-pill b { color: var(--text); font-weight: 500; }
+
+/* ICON SVGs */
+.icon { display: block; }
+
+</style>
+</head>
+<body>
+
+<nav id="main-nav"></nav>
+<script src="nav.js"></script>
+
+<nav class="nav">
+  <a class="nav-logo" href="#">TheDatingCritic</a>
+  <div class="nav-links">
+    <a href="#">Top 10</a>
+    <a href="#" class="active">Reviews</a>
+    <a href="#">Dating Advice</a>
+  </div>
+</nav>
+
+<div style="background: var(--surface); border-bottom: 1px solid var(--border);">
+  <div class="hero">
+    <div class="hero-label">Asian Dating Sites · Updated April 2026</div>
+    <h1>Best Asian Dating Sites<br>We've Actually Tested</h1>
+    <p class="hero-sub">Each site scored across 5 criteria by our editorial team. Badges show what each site is actually good for — glance and decide.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">I'm looking for</div>
+      <div class="filter-item active">
+        <div class="filter-dot" style="background:var(--green)"></div>
+        Serious dating
+      </div>
+      <div class="filter-item">
+        <div class="filter-dot" style="background:var(--coral)"></div>
+        Casual dating
+      </div>
+      <div class="filter-item">
+        <div class="filter-dot" style="background:var(--blue)"></div>
+        50+ friendly
+      </div>
+      <div class="filter-item">
+        <div class="filter-dot" style="background:var(--amber)"></div>
+        Best value
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Region</div>
+      <div class="filter-item active">All Asian</div>
+      <div class="filter-item">Japan</div>
+      <div class="filter-item">Korea</div>
+      <div class="filter-item">Thailand</div>
+      <div class="filter-item">Philippines</div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards-area">
+
+    <div class="disclaimer">
+      <b>Advertising disclosure:</b> We earn referral fees from partners. Listing order may be influenced, but scores are calculated independently by our editorial team.
+    </div>
+
+    <!-- ======= CARD 1: FeelsAsian ======= -->
+    <div class="card top">
+      <div class="card-header">
+        <div class="card-rank-name">
+          <div class="rank-badge">1</div>
+          <div class="card-name">FeelsAsian</div>
+        </div>
+        <span class="editor-pick">Editor's pick</span>
+      </div>
+
+      <div class="card-body">
+        <div class="card-left">
+          <p class="card-tagline">Largest verified Asian dating platform. Strong safety, active profiles, good match quality for serious relationships.</p>
+
+          <div class="badges-row">
+
+            <!-- Serious dating — ACTIVE green -->
+            <div class="badge" title="Great for serious, long-term relationships">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#1c7a42" stroke-width="2"/></svg>
+                <div class="badge-ring-inner green">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="#1c7a42" stroke-width="2" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Serious<br>dating</div>
+            </div>
+
+            <!-- Verified — ACTIVE green -->
+            <div class="badge" title="All profiles are verified">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#1c7a42" stroke-width="2"/></svg>
+                <div class="badge-ring-inner green">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 12l2 2 4-4" stroke="#1c7a42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="#1c7a42" stroke-width="2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Verified<br>profiles</div>
+            </div>
+
+            <!-- 2M members — ACTIVE blue -->
+            <div class="badge" title="Over 2 million active members">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#1a5fa5" stroke-width="2"/></svg>
+                <div class="badge-ring-inner blue">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <circle cx="9" cy="7" r="4" stroke="#1a5fa5" stroke-width="2"/>
+                    <circle cx="17" cy="7" r="4" stroke="#1a5fa5" stroke-width="2"/>
+                    <path d="M1 21v-1a7 7 0 017-7h8a7 7 0 017 7v1" stroke="#1a5fa5" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">2M+<br>members</div>
+            </div>
+
+            <!-- Asian focused — ACTIVE blue -->
+            <div class="badge" title="Niche Asian dating platform">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#1a5fa5" stroke-width="2"/></svg>
+                <div class="badge-ring-inner blue">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="9" stroke="#1a5fa5" stroke-width="2"/>
+                    <path d="M3.6 9h16.8M3.6 15h16.8" stroke="#1a5fa5" stroke-width="1.5"/>
+                    <path d="M12 3c-2 3-3 6-3 9s1 6 3 9M12 3c2 3 3 6 3 9s-1 6-3 9" stroke="#1a5fa5" stroke-width="1.5"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Asian<br>focused</div>
+            </div>
+
+            <!-- 50+ — INACTIVE -->
+            <div class="badge" title="Not optimized for 50+ users">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#d8d4cc" stroke-width="1.5" stroke-dasharray="5 4"/></svg>
+                <div class="badge-ring-inner inactive">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <circle cx="10" cy="8" r="4" stroke="#c8c4bc" stroke-width="2"/>
+                    <path d="M2 20c0-3.87 3.13-7 7-7h2" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M18 14v7M15 17.5h6" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label inactive">50+<br>friendly</div>
+            </div>
+
+            <!-- Casual — INACTIVE -->
+            <div class="badge" title="Not ideal for casual dating">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#d8d4cc" stroke-width="1.5" stroke-dasharray="5 4"/></svg>
+                <div class="badge-ring-inner inactive">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 10l4-6 3 3-6 4" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11 14l-4 6-3-3 6-4" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="8" y1="16" x2="16" y2="8" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label inactive">Casual<br>dating</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card-right">
+          <div class="score-wrap">
+            <div class="score-num">9.4</div>
+            <div class="score-stars">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+              <div class="star"></div><div class="star half"></div>
+            </div>
+            <div class="score-word">Excellent</div>
+          </div>
+          <button class="btn-visit">Visit Site →</button>
+          <button class="btn-review">Read Review</button>
+          <div class="deal-tag">+20 free credits</div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span class="meta-pill">Members: <b>2M+</b></span>
+        <span class="meta-pill">From: <b>$15</b></span>
+        <span class="meta-pill">User rating: <b>4.7/5</b></span>
+        <span class="meta-pill">Best for: <b>Long-term</b></span>
+      </div>
+    </div>
+
+    <!-- ======= CARD 2: ThaiDates ======= -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-rank-name">
+          <div class="rank-badge">2</div>
+          <div class="card-name">ThaiDates</div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-left">
+          <p class="card-tagline">Thai-focused niche platform. Excellent value, active live chat, great for both casual connections and something more serious.</p>
+
+          <div class="badges-row">
+
+            <!-- Casual — ACTIVE coral -->
+            <div class="badge" title="Great for casual dating">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#c0391a" stroke-width="2"/></svg>
+                <div class="badge-ring-inner coral">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 10l4-6 3 3-6 4" stroke="#c0391a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11 14l-4 6-3-3 6-4" stroke="#c0391a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="8" y1="16" x2="16" y2="8" stroke="#c0391a" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Casual<br>dating</div>
+            </div>
+
+            <!-- Best value — ACTIVE amber -->
+            <div class="badge" title="Best value for money">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#a05c10" stroke-width="2"/></svg>
+                <div class="badge-ring-inner amber">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="9" stroke="#a05c10" stroke-width="2"/>
+                    <path d="M12 6v2M12 16v2M9 9.27A3 3 0 0112 8a3 3 0 010 6 3 3 0 01-3 3" stroke="#a05c10" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Best<br>value</div>
+            </div>
+
+            <!-- Live chat — ACTIVE amber -->
+            <div class="badge" title="Excellent live chat features">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#a05c10" stroke-width="2"/></svg>
+                <div class="badge-ring-inner amber">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#a05c10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Live<br>chat</div>
+            </div>
+
+            <!-- Serious — INACTIVE -->
+            <div class="badge" title="Limited serious dating features">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#d8d4cc" stroke-width="1.5" stroke-dasharray="5 4"/></svg>
+                <div class="badge-ring-inner inactive">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="#c8c4bc" stroke-width="2" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label inactive">Serious<br>dating</div>
+            </div>
+
+            <!-- Verified — INACTIVE -->
+            <div class="badge" title="Limited profile verification">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#d8d4cc" stroke-width="1.5" stroke-dasharray="5 4"/></svg>
+                <div class="badge-ring-inner inactive">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 12l2 2 4-4" stroke="#c8c4bc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="#c8c4bc" stroke-width="2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label inactive">Verified<br>profiles</div>
+            </div>
+
+            <!-- 50+ — INACTIVE -->
+            <div class="badge" title="Not optimized for 50+ users">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#d8d4cc" stroke-width="1.5" stroke-dasharray="5 4"/></svg>
+                <div class="badge-ring-inner inactive">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <circle cx="10" cy="8" r="4" stroke="#c8c4bc" stroke-width="2"/>
+                    <path d="M2 20c0-3.87 3.13-7 7-7h2" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M18 14v7M15 17.5h6" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label inactive">50+<br>friendly</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card-right">
+          <div class="score-wrap">
+            <div class="score-num">8.7</div>
+            <div class="score-stars">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+              <div class="star"></div><div class="star empty"></div>
+            </div>
+            <div class="score-word">Very good</div>
+          </div>
+          <button class="btn-visit">Visit Site →</button>
+          <button class="btn-review">Read Review</button>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span class="meta-pill">Members: <b>500K+</b></span>
+        <span class="meta-pill">From: <b>$10</b></span>
+        <span class="meta-pill">User rating: <b>4.1/5</b></span>
+        <span class="meta-pill">Best for: <b>Casual & serious</b></span>
+      </div>
+    </div>
+
+    <!-- ======= CARD 3: DatingKorea ======= -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-rank-name">
+          <div class="rank-badge">3</div>
+          <div class="card-name">DatingKorea</div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-left">
+          <p class="card-tagline">Premium Korean-focused platform with rigorous verification. Smaller but high-quality member base, strong safety standards.</p>
+
+          <div class="badges-row">
+
+            <!-- Verified — ACTIVE green -->
+            <div class="badge" title="Rigorous profile verification">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#1c7a42" stroke-width="2"/></svg>
+                <div class="badge-ring-inner green">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 12l2 2 4-4" stroke="#1c7a42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="#1c7a42" stroke-width="2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Verified<br>profiles</div>
+            </div>
+
+            <!-- Safety — ACTIVE green -->
+            <div class="badge" title="Top-tier safety and moderation">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#1c7a42" stroke-width="2"/></svg>
+                <div class="badge-ring-inner green">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3l8 4v5c0 4.42-3.58 8-8 9-4.42-1-8-4.58-8-9V7l8-4z" stroke="#1c7a42" stroke-width="2" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Top<br>safety</div>
+            </div>
+
+            <!-- Serious — ACTIVE blue -->
+            <div class="badge" title="Great for serious relationships">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#1a5fa5" stroke-width="2"/></svg>
+                <div class="badge-ring-inner blue">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="#1a5fa5" stroke-width="2" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">Serious<br>dating</div>
+            </div>
+
+            <!-- 50+ — ACTIVE blue -->
+            <div class="badge" title="Good experience for 50+ users">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#1a5fa5" stroke-width="2"/></svg>
+                <div class="badge-ring-inner blue">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <circle cx="10" cy="8" r="4" stroke="#1a5fa5" stroke-width="2"/>
+                    <path d="M2 20c0-3.87 3.13-7 7-7h2" stroke="#1a5fa5" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M18 14v7M15 17.5h6" stroke="#1a5fa5" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label">50+<br>friendly</div>
+            </div>
+
+            <!-- Live chat — INACTIVE -->
+            <div class="badge" title="Limited live chat options">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#d8d4cc" stroke-width="1.5" stroke-dasharray="5 4"/></svg>
+                <div class="badge-ring-inner inactive">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label inactive">Live<br>chat</div>
+            </div>
+
+            <!-- Casual — INACTIVE -->
+            <div class="badge" title="Not suited for casual dating">
+              <div class="badge-ring">
+                <svg class="ring-svg" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#d8d4cc" stroke-width="1.5" stroke-dasharray="5 4"/></svg>
+                <div class="badge-ring-inner inactive">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 10l4-6 3 3-6 4" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11 14l-4 6-3-3 6-4" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="8" y1="16" x2="16" y2="8" stroke="#c8c4bc" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="badge-label inactive">Casual<br>dating</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card-right">
+          <div class="score-wrap">
+            <div class="score-num">8.3</div>
+            <div class="score-stars">
+              <div class="star"></div><div class="star"></div><div class="star"></div>
+              <div class="star"></div><div class="star empty"></div>
+            </div>
+            <div class="score-word">Good</div>
+          </div>
+          <button class="btn-visit">Visit Site →</button>
+          <button class="btn-review">Read Review</button>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span class="meta-pill">Members: <b>300K+</b></span>
+        <span class="meta-pill">From: <b>$20</b></span>
+        <span class="meta-pill">User rating: <b>4.3/5</b></span>
+        <span class="meta-pill">Best for: <b>Serious relationships</b></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

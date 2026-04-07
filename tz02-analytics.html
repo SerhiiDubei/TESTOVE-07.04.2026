@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Economics — thedatingcritic.com — AdConnect PMM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0e0f11; --surface: #161719; --surface2: #1c1e20;
+  --border: #252729; --text: #e8e6e0; --muted: #6b6966;
+  --green: #2ecc71; --green-dim: #0d2318;
+  --red: #ff5f5f; --red-dim: #1f0a0a;
+  --amber: #f5a623; --amber-dim: #1f1608;
+  --blue: #4a9eff; --blue-dim: #0a1a2d;
+  --purple: #a78bfa; --purple-dim: #1a1230;
+}
+body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; padding: 72px 32px 60px; max-width: 960px; margin: 0 auto; }
+
+.header { margin-bottom: 40px; }
+.tag { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+h1 { font-size: 28px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+.sub { font-size: 13px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; }
+
+.section { margin-bottom: 36px; }
+.section-title {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--muted);
+  margin-bottom: 14px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title .dot { width: 6px; height: 6px; border-radius: 50%; }
+
+/* METRICS GRID */
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 10px; }
+.metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.metric-card.green { border-color: rgba(46,204,113,.3); background: var(--green-dim); }
+.metric-card.red   { border-color: rgba(255,95,95,.3);  background: var(--red-dim); }
+.metric-card.amber { border-color: rgba(245,166,35,.3); background: var(--amber-dim); }
+.metric-card.blue  { border-color: rgba(74,158,255,.3); background: var(--blue-dim); }
+.metric-label { font-size: 10px; font-family: 'IBM Plex Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.metric-value { font-size: 22px; font-weight: 800; line-height: 1; }
+.metric-value.green  { color: var(--green); }
+.metric-value.red    { color: var(--red); }
+.metric-value.amber  { color: var(--amber); }
+.metric-value.blue   { color: var(--blue); }
+.metric-value.white  { color: var(--text); }
+.metric-sub { font-size: 11px; color: var(--muted); margin-top: 4px; font-family: 'IBM Plex Mono', monospace; }
+
+/* FUNNEL */
+.funnel { display: flex; align-items: stretch; gap: 0; margin-bottom: 8px; overflow-x: auto; }
+.funnel-step { flex: 1; min-width: 120px; }
+.funnel-box {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 12px; text-align: center;
+  margin-right: 6px;
+}
+.funnel-step:last-child .funnel-box { margin-right: 0; }
+.funnel-name { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: 'IBM Plex Mono', monospace; margin-bottom: 8px; }
+.funnel-num { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+.funnel-cr {
+  font-size: 10px; font-family: 'IBM Plex Mono', monospace;
+  padding: 2px 7px; border-radius: 10px; display: inline-block;
+}
+.funnel-cr.good { background: var(--green-dim); color: var(--green); }
+.funnel-cr.mid  { background: var(--amber-dim); color: var(--amber); }
+.funnel-cr.bad  { background: var(--red-dim);   color: var(--red);   }
+.funnel-arrow { display: flex; align-items: center; padding-top: 24px; color: var(--border); font-size: 18px; margin-right: 6px; }
+
+/* TABLE */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); text-align: left;
+  padding: 8px 12px; border-bottom: 1px solid var(--border); font-weight: 400;
+}
+td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--surface); }
+.mono { font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+.green-text { color: var(--green); font-weight: 700; }
+.red-text   { color: var(--red);   font-weight: 700; }
+.amber-text { color: var(--amber); font-weight: 700; }
+.blue-text  { color: var(--blue);  font-weight: 700; }
+
+/* SCENARIO TABLE */
+.scenario-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.scenario {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+}
+.scenario.base { border-color: rgba(74,158,255,.4); }
+.scenario-head { padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface2); }
+.scenario-name { font-size: 12px; font-weight: 700; color: var(--text); }
+.scenario-cpc  { font-size: 11px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; }
+.scenario-body { padding: 12px 16px; }
+.sc-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+.sc-row:last-child { border-bottom: none; }
+.sc-key { color: var(--muted); font-size: 11px; }
+.sc-val { font-weight: 700; font-family: 'IBM Plex Mono', monospace; }
+.roas-good { color: var(--green); }
+.roas-bad  { color: var(--red); }
+
+/* ASSUMPTIONS */
+.assumption-list { display: flex; flex-direction: column; gap: 6px; }
+.assumption {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 12px; border-radius: 6px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: 12px;
+}
+.assumption-source {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  padding: 2px 6px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+  background: var(--blue-dim); color: var(--blue);
+}
+.assumption-source.dataset { background: var(--green-dim); color: var(--green); }
+.assumption-source.bench   { background: var(--purple-dim); color: var(--purple); }
+.assumption-text { color: var(--muted); line-height: 1.5; }
+.assumption-text b { color: var(--text); }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+.insight-box {
+  background: var(--amber-dim); border: 1px solid rgba(245,166,35,.3);
+  border-radius: 10px; padding: 16px 20px; margin-top: 16px;
+}
+.insight-title { font-size: 12px; font-weight: 700; color: var(--amber); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em; }
+.insight-text { font-size: 13px; color: #e8c870; line-height: 1.6; }
+
+</style>
+</head>
+<body>
+
+<nav id="main-nav"></nav>
+<script src="nav.js"></script>
+
+<div class="header">
+  <div class="tag">Завдання 02 · Unit Economics · Квітень 2026</div>
+  <h1>Unit Economics<br>thedatingcritic.com</h1>
+  <div class="sub">Дані: SimilarWeb (березень 2026) + реальний датасет Asian Dating</div>
+</div>
+
+<!-- SECTION 1: SOURCE DATA -->
+<div class="section">
+  <div class="section-title">
+    <div class="dot" style="background:var(--green)"></div>
+    Реальні дані з датасету
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card blue">
+      <div class="metric-label">Total clicks</div>
+      <div class="metric-value blue">70,776</div>
+      <div class="metric-sub">на партнерів (датасет)</div>
+    </div>
+    <div class="metric-card green">
+      <div class="metric-label">Total leads</div>
+      <div class="metric-value green">4,140</div>
+      <div class="metric-sub">реєстрації на партнерах</div>
+    </div>
+    <div class="metric-card amber">
+      <div class="metric-label">Total sales</div>
+      <div class="metric-value amber">490</div>
+      <div class="metric-sub">покупок кредитів (FTD)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Total revenue</div>
+      <div class="metric-value white">$364,010</div>
+      <div class="metric-sub">комісія від партнерів</div>
+    </div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card green">
+      <div class="metric-label">RPC</div>
+      <div class="metric-value green">$5.14</div>
+      <div class="metric-sub">revenue per click</div>
+    </div>
+    <div class="metric-card amber">
+      <div class="metric-label">RPL</div>
+      <div class="metric-value amber">$87.93</div>
+      <div class="metric-sub">revenue per lead</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">RPS</div>
+      <div class="metric-value white">$742</div>
+      <div class="metric-sub">revenue per sale</div>
+    </div>
+    <div class="metric-card blue">
+      <div class="metric-label">FeelsAsian RPC</div>
+      <div class="metric-value blue">$9.17</div>
+      <div class="metric-sub">#1 offer, pos 1</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: FUNNEL -->
+<div class="section">
+  <div class="section-title">
+    <div class="dot" style="background:var(--blue)"></div>
+    Воронка (на основі реальних CR з датасету)
+  </div>
+  <div class="funnel">
+    <div class="funnel-step">
+      <div class="funnel-box">
+        <div class="funnel-name">Трафік/міс</div>
+        <div class="funnel-num">81,136</div>
+        <div class="funnel-cr mid">SimilarWeb</div>
+      </div>
+    </div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step">
+      <div class="funnel-box">
+        <div class="funnel-name">Engaged (не bounce)</div>
+        <div class="funnel-num">33,510</div>
+        <div class="funnel-cr mid">41.3% CR</div>
+      </div>
+    </div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step">
+      <div class="funnel-box">
+        <div class="funnel-name">Кліки на партнерів</div>
+        <div class="funnel-num">~8,378</div>
+        <div class="funnel-cr mid">~25% CTR</div>
+      </div>
+    </div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step">
+      <div class="funnel-box">
+        <div class="funnel-name">Реєстрації</div>
+        <div class="funnel-num">~490</div>
+        <div class="funnel-cr good">5.8% CR</div>
+      </div>
+    </div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step">
+      <div class="funnel-box">
+        <div class="funnel-name">Покупки (FTD)</div>
+        <div class="funnel-num">~58</div>
+        <div class="funnel-cr mid">11.8% CR</div>
+      </div>
+    </div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step">
+      <div class="funnel-box">
+        <div class="funnel-name">Revenue/міс</div>
+        <div class="funnel-num">~$43K</div>
+        <div class="funnel-cr good">RPC $5.14</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: SIMILARWEB -->
+<div class="section">
+  <div class="section-title">
+    <div class="dot" style="background:var(--amber)"></div>
+    SimilarWeb — березень 2026 (реальні дані)
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card amber">
+      <div class="metric-label">Monthly visits</div>
+      <div class="metric-value amber">81,136</div>
+      <div class="metric-sub">-1.63% vs попередній місяць</div>
+    </div>
+    <div class="metric-card red">
+      <div class="metric-label">Paid Search</div>
+      <div class="metric-value red">79.3%</div>
+      <div class="metric-sub">основне джерело трафіку</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Organic Search</div>
+      <div class="metric-value white">3.4%</div>
+      <div class="metric-sub">дуже низько для review сайту</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Bounce Rate</div>
+      <div class="metric-value white">58.7%</div>
+      <div class="metric-sub">Visit duration: 1:12 хв</div>
+    </div>
+  </div>
+
+  <table style="margin-top:14px;">
+    <thead>
+      <tr>
+        <th>Канал</th>
+        <th>Частка</th>
+        <th>Visits/міс</th>
+        <th>Статус</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Paid Search (Google Ads)</td>
+        <td class="mono red-text">79.27%</td>
+        <td class="mono">64,315</td>
+        <td><span style="background:var(--red-dim);color:var(--red);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Висока залежність</span></td>
+      </tr>
+      <tr>
+        <td>Direct</td>
+        <td class="mono">13.46%</td>
+        <td class="mono">10,921</td>
+        <td><span style="background:var(--green-dim);color:var(--green);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Хороший сигнал</span></td>
+      </tr>
+      <tr>
+        <td>Social</td>
+        <td class="mono">2.57%</td>
+        <td class="mono">2,085</td>
+        <td><span style="background:var(--amber-dim);color:var(--amber);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Потенціал росту</span></td>
+      </tr>
+      <tr>
+        <td>Organic Search</td>
+        <td class="mono red-text">3.38%</td>
+        <td class="mono">2,744</td>
+        <td><span style="background:var(--red-dim);color:var(--red);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Критично низько</span></td>
+      </tr>
+      <tr>
+        <td>Referrals</td>
+        <td class="mono">&lt;1%</td>
+        <td class="mono">~811</td>
+        <td><span style="background:var(--border);color:var(--muted);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Redirect без referrer</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 4: PREDICTION SCENARIOS -->
+<div class="section">
+  <div class="section-title">
+    <div class="dot" style="background:var(--purple)"></div>
+    Prediction — 3 сценарії закупівлі (місяць)
+  </div>
+
+  <div class="scenario-wrap">
+    <div class="scenario">
+      <div class="scenario-head">
+        <div class="scenario-name">Conservative</div>
+        <div class="scenario-cpc">CPC $1.20 · низька конкуренція</div>
+      </div>
+      <div class="scenario-body">
+        <div class="sc-row"><span class="sc-key">Paid visits/міс</span><span class="sc-val">64,315</span></div>
+        <div class="sc-row"><span class="sc-key">Spend</span><span class="sc-val red-text">$77,178</span></div>
+        <div class="sc-row"><span class="sc-key">Clicks to partners</span><span class="sc-val">~6,639</span></div>
+        <div class="sc-row"><span class="sc-key">Leads (reg)</span><span class="sc-val">~388</span></div>
+        <div class="sc-row"><span class="sc-key">Sales (FTD)</span><span class="sc-val">~46</span></div>
+        <div class="sc-row"><span class="sc-key">Revenue</span><span class="sc-val green-text">$34,146</span></div>
+        <div class="sc-row"><span class="sc-key">Profit</span><span class="sc-val red-text">-$43,032</span></div>
+        <div class="sc-row"><span class="sc-key">ROAS</span><span class="sc-val roas-bad">0.44x</span></div>
+        <div class="sc-row"><span class="sc-key">CAC</span><span class="sc-val red-text">$1,678</span></div>
+      </div>
+    </div>
+
+    <div class="scenario base">
+      <div class="scenario-head">
+        <div class="scenario-name">Base ★</div>
+        <div class="scenario-cpc">CPC $1.80 · поточний ринок</div>
+      </div>
+      <div class="scenario-body">
+        <div class="sc-row"><span class="sc-key">Paid visits/міс</span><span class="sc-val">64,315</span></div>
+        <div class="sc-row"><span class="sc-key">Spend</span><span class="sc-val red-text">$115,767</span></div>
+        <div class="sc-row"><span class="sc-key">Clicks to partners</span><span class="sc-val">~6,639</span></div>
+        <div class="sc-row"><span class="sc-key">Leads (reg)</span><span class="sc-val">~388</span></div>
+        <div class="sc-row"><span class="sc-key">Sales (FTD)</span><span class="sc-val">~46</span></div>
+        <div class="sc-row"><span class="sc-key">Revenue</span><span class="sc-val green-text">$34,146</span></div>
+        <div class="sc-row"><span class="sc-key">Profit</span><span class="sc-val red-text">-$81,621</span></div>
+        <div class="sc-row"><span class="sc-key">ROAS</span><span class="sc-val roas-bad">0.29x</span></div>
+        <div class="sc-row"><span class="sc-key">CAC</span><span class="sc-val red-text">$2,517</span></div>
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-head">
+        <div class="scenario-name">Aggressive</div>
+        <div class="scenario-cpc">CPC $2.50 · висока конкуренція</div>
+      </div>
+      <div class="scenario-body">
+        <div class="sc-row"><span class="sc-key">Paid visits/міс</span><span class="sc-val">64,315</span></div>
+        <div class="sc-row"><span class="sc-key">Spend</span><span class="sc-val red-text">$160,788</span></div>
+        <div class="sc-row"><span class="sc-key">Clicks to partners</span><span class="sc-val">~6,639</span></div>
+        <div class="sc-row"><span class="sc-key">Leads (reg)</span><span class="sc-val">~388</span></div>
+        <div class="sc-row"><span class="sc-key">Sales (FTD)</span><span class="sc-val">~46</span></div>
+        <div class="sc-row"><span class="sc-key">Revenue</span><span class="sc-val green-text">$34,146</span></div>
+        <div class="sc-row"><span class="sc-key">Profit</span><span class="sc-val red-text">-$126,642</span></div>
+        <div class="sc-row"><span class="sc-key">ROAS</span><span class="sc-val roas-bad">0.21x</span></div>
+        <div class="sc-row"><span class="sc-key">CAC</span><span class="sc-val red-text">$3,497</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-title">Ключовий інсайт</div>
+    <div class="insight-text">
+      У всіх сценаріях ROAS &lt;1 — це означає що при поточних CR і RPC, платна закупівля збиткова.
+      Причина: Bounce rate 58.7% + низький CTR на партнера вбивають воронку ще на вході.
+      Щоб вийти на ROAS 1x при CPC $1.80, потрібно або збільшити RPC до ~$17.4,
+      або підняти CTR на партнера з 25% до 75%, або знизити bounce rate вдвічі.
+      <br><br>
+      Саме тому продуктові механіки (завдання 02) критичні — без них Google Ads масштабувати неможливо.
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: ASSUMPTIONS -->
+<div class="section">
+  <div class="section-title">
+    <div class="dot" style="background:var(--muted)"></div>
+    Припущення та джерела
+  </div>
+  <div class="assumption-list">
+    <div class="assumption">
+      <span class="assumption-source">SimilarWeb</span>
+      <span class="assumption-text"><b>81,136 visits/міс, 79.3% Paid Search</b> — реальні дані березень 2026. Bounce rate 58.7%, Visit duration 1:12.</span>
+    </div>
+    <div class="assumption">
+      <span class="assumption-source dataset">Датасет</span>
+      <span class="assumption-text"><b>CR click→lead 5.8%, CR lead→sale 11.8%, RPC $5.14</b> — реальні конверсії з тестового датасету Asian Dating (70,776 кліків, 490 продажів).</span>
+    </div>
+    <div class="assumption">
+      <span class="assumption-source bench">Бенчмарк</span>
+      <span class="assumption-text"><b>CPC $1.20–2.50</b> — галузевий бенчмарк Google Ads для dating/Asian keywords (США). Джерело: WordStream Dating Industry, 2024.</span>
+    </div>
+    <div class="assumption">
+      <span class="assumption-source bench">Припущення</span>
+      <span class="assumption-text"><b>Partner CTR 25%</b> — з DOM аудиту сайту: 3 CTA на картку (VISIT SITE, READ REVIEW, BROWSE SINGLES), середній CTR для affiliate review сайтів 20-30%.</span>
+    </div>
+    <div class="assumption">
+      <span class="assumption-source">Ліміт</span>
+      <span class="assumption-text"><b>Outgoing traffic недоступний</b> — SimilarWeb показав "No results" для outgoing links через redirect без referrer (/go/ endpoint). Реальний CTR на партнера — тільки з внутрішньої аналітики.</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
