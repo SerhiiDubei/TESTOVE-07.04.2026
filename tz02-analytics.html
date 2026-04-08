@@ -145,20 +145,16 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
   <div class="task-summary-inner">
     <div class="task-summary-top"><span class="task-num">Завдання 02 · Аналітика</span></div>
     <p class="task-summary-text">
-      З публічних джерел маю SimilarWeb — 81K відвідувачів за березень 2026, 79% платний пошук, bounce rate 58.7%. Глибші дані (CTR на партнера, внутрішні конверсії) публічно недоступні через redirect без referrer. Тому для unit economics використовував датасет з третього завдання виключно як джерело залежностей — CR і RPC, але не як абсолютні обсяги.
-      <br><br>
-      Методологія: зафіксував три сценарії CTR кнопки "Visit Site" (8% / 15% / 20%), через bounce rate зворотно порахував implied visits і paid spend, і порівняв з реальним revenue з датасету. Break-even CPC у найкращому сценарії — $0.54, тоді як ринок стоїть $1.20–2.50. Висновок: без покращення CR на сайті масштабувати платну закупівлю збитково при будь-якому сценарії.
+      З публічних джерел маю SimilarWeb — 81K відвідувачів за березень 2026, 79% платний пошук, bounce rate 58.7%. Для unit economics взяв одне число з датасету — середню виплату $740 за продаж (CPA). Решта — чиста математика на основі трафіку.
     </p>
     <div class="real-data-grid">
       <div class="rdi"><div class="rdi-label">Visits / міс</div><div class="rdi-val a">81,136</div><div class="rdi-sub">SimilarWeb, берез. 2026</div></div>
-      <div class="rdi"><div class="rdi-label">Paid Search</div><div class="rdi-val r">79.3%</div><div class="rdi-sub">Органіка лише 3.4%</div></div>
-      <div class="rdi"><div class="rdi-label">Bounce Rate</div><div class="rdi-val r">58.7%</div><div class="rdi-sub">Engaged 41.3%</div></div>
-      <div class="rdi"><div class="rdi-label">Кліки на партнерів</div><div class="rdi-val g">70,776</div><div class="rdi-sub">З датасету (1 міс)</div></div>
-      <div class="rdi"><div class="rdi-label">Revenue / міс</div><div class="rdi-val g">$364,010</div><div class="rdi-sub">З датасету (реальний)</div></div>
-      <div class="rdi"><div class="rdi-label">EPC</div><div class="rdi-val g">$5.14</div><div class="rdi-sub">Revenue per click</div></div>
-      <div class="rdi"><div class="rdi-label">Break-even CPC</div><div class="rdi-val r">$0.21–0.54</div><div class="rdi-sub">Залежно від CTR</div></div>
-      <div class="rdi"><div class="rdi-label">Ринковий CPC</div><div class="rdi-val r">$1.20–2.50</div><div class="rdi-sub">Dating US, Google Ads</div></div>
+      <div class="rdi"><div class="rdi-label">Paid Search</div><div class="rdi-val r">79.3%</div><div class="rdi-sub">→ 64,341 paid visits</div></div>
+      <div class="rdi"><div class="rdi-label">Bounce Rate</div><div class="rdi-val r">58.7%</div><div class="rdi-sub">→ 26,573 engaged</div></div>
+      <div class="rdi"><div class="rdi-label">CPA per sale</div><div class="rdi-val">$740</div><div class="rdi-sub">Єдине з датасету</div></div>
     </div>
+  </div>
+</div>
   </div>
 </div>
   </div>
