@@ -116,647 +116,210 @@ tr:hover td { background: var(--surface); }
       Підійшов ітеративно: не став одразу рахувати один інтегральний показник, а спочатку подивився на дані з чотирьох різних кутів. Порахував EPC по кожному офферу, потім подивився на leads і engagement разом як на комбінований сигнал інтересу, потім вирахував cost per engagement при ринковому CPC, і нарешті побудував просту систему ваг де RPC, CR на ліда і CR на продаж мають різну вагу. Коли всі чотири POV дають один і той самий порядок — це вже не гіпотеза, це консенсус. Також по дорозі розгадав модель виплат: revenue per sale стабільно $710–749 по всіх рядках, тобто це CPA з фіксованою виплатою за першу покупку.
     </p>
   </div>
-</div>
 
-<div class="hdr">
-  <div class="hdr-tag">Завдання 02 · Asian Dating Dataset · Cross Analytics</div>
-  <h1>Кросс-аналітика: 4 POV<br>одних і тих самих даних</h1>
-  <div class="hdr-sub">Dataset: 17 рядків · 7 офферів · 5 метрик · SimilarWeb 81K visits/міс</div>
-</div>
+<div style="max-width:960px;margin:0 auto;padding:32px 28px 60px;">
 
-<!-- REVELATION -->
-<div class="revelation">
-  <div class="rev-item">
-    <div class="rev-label">Модель виплат</div>
-    <div class="rev-val">CPA</div>
-    <div class="rev-sub">~$711–749 per sale (FTD)</div>
-  </div>
-  <div class="rev-item">
-    <div class="rev-label">Revenue per sale range</div>
-    <div class="rev-val">$710–749</div>
-    <div class="rev-sub">стабільно по всіх офферах</div>
-  </div>
-  <div class="rev-item">
-    <div class="rev-label">Датасет — не рік</div>
-    <div class="rev-val">~1 міс</div>
-    <div class="rev-sub">тестовий період A/B позицій</div>
-  </div>
-</div>
-
-<!-- POV A: RPC -->
-<div class="section">
-  <div class="sec-title">
-    <div class="sec-dot" style="background:var(--green)"></div>
-    POV A — Revenue per Click (скільки заробляємо з кожного кліку на партнера)
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Оффер</th>
-        <th>Clicks</th>
-        <th>Revenue</th>
-        <th>RPC</th>
-        <th>RPE</th>
-        <th>RPL</th>
-        <th>RPS</th>
-        <th>Статус</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="rank r1">1</span></td>
-        <td>FeelsAsian</td>
-        <td>27,290</td>
-        <td>$250,255</td>
-        <td class="v-green">$9.17</td>
-        <td class="v-green">$270.84</td>
-        <td>$93.45</td>
-        <td>$749.27</td>
-        <td><span class="pill p-green">Топ</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r2">2</span></td>
-        <td>ThaiDates</td>
-        <td>8,765</td>
-        <td>$34,128</td>
-        <td class="v-green">$3.89</td>
-        <td>$273.02</td>
-        <td>$64.27</td>
-        <td>$741.91</td>
-        <td><span class="pill p-green">Сильний</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r3">3</span></td>
-        <td>DatingKorea</td>
-        <td>10,125</td>
-        <td>$34,128</td>
-        <td class="v-amber">$3.37</td>
-        <td>$268.72</td>
-        <td>$88.19</td>
-        <td>$726.13</td>
-        <td><span class="pill p-amber">Середній</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r3">4</span></td>
-        <td>EasternDate</td>
-        <td>3,527</td>
-        <td>$11,374</td>
-        <td class="v-amber">$3.22</td>
-        <td>$264.51</td>
-        <td>$67.70</td>
-        <td>$710.88</td>
-        <td><span class="pill p-amber">Середній</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r-low">5</span></td>
-        <td>FeelsJapan</td>
-        <td>10,393</td>
-        <td>$25,594</td>
-        <td class="v-amber">$2.46</td>
-        <td class="v-green">$290.84</td>
-        <td>$103.20</td>
-        <td>$731.26</td>
-        <td><span class="pill p-amber">Середній</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r-low">6</span></td>
-        <td>Romance</td>
-        <td>3,129</td>
-        <td>$2,844</td>
-        <td class="v-red">$0.91</td>
-        <td class="v-red">$355.50</td>
-        <td>$88.88</td>
-        <td>$711.00</td>
-        <td><span class="pill p-red">Слабкий</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r-low">7</span></td>
-        <td>AsianLove</td>
-        <td>7,547</td>
-        <td>$5,687</td>
-        <td class="v-red">$0.75</td>
-        <td class="v-red">$210.63</td>
-        <td>$59.24</td>
-        <td>$710.88</td>
-        <td><span class="pill p-red">Слабкий</span></td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="insight">
-    <div class="insight-label">Інсайт</div>
-    <div class="insight-text">RPE (revenue per engagement) у всіх ~$210–355 — дуже стабільно. Це означає що engagement якісний незалежно від офферу. Але RPC різниться в 12x між FeelsAsian ($9.17) і AsianLove ($0.75) — проблема не в якості трафіку, а в конверсії кліків у продажі.</div>
-  </div>
-</div>
-
-<!-- POV B: COMBINED FUNNEL -->
-<div class="section">
-  <div class="sec-title">
-    <div class="sec-dot" style="background:var(--blue)"></div>
-    POV B — Об'єднаний фанел (Leads + Engagement разом = реальний інтерес)
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Оффер</th>
-        <th>Clicks</th>
-        <th>Leads</th>
-        <th>Eng</th>
-        <th>L+E (total intent)</th>
-        <th>CR click→L+E</th>
-        <th>CR click→sale</th>
-        <th>Sale/Intent ratio</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>FeelsAsian</td>
-        <td>27,290</td>
-        <td>2,678</td>
-        <td>924</td>
-        <td class="v-green">3,602</td>
-        <td>
-          <div class="bar-wrap">
-            <div class="bar" style="width:70px;background:var(--green)"></div>
-            <span class="bar-val v-green">13.2%</span>
-          </div>
-        </td>
-        <td class="v-green">1.22%</td>
-        <td class="v-green">9.3%</td>
-      </tr>
-      <tr>
-        <td>ThaiDates</td>
-        <td>8,765</td>
-        <td>531</td>
-        <td>125</td>
-        <td class="v-amber">656</td>
-        <td>
-          <div class="bar-wrap">
-            <div class="bar" style="width:40px;background:var(--amber)"></div>
-            <span class="bar-val v-amber">7.5%</span>
-          </div>
-        </td>
-        <td class="v-amber">0.52%</td>
-        <td class="v-amber">7.0%</td>
-      </tr>
-      <tr>
-        <td>EasternDate</td>
-        <td>3,527</td>
-        <td>168</td>
-        <td>43</td>
-        <td>211</td>
-        <td>
-          <div class="bar-wrap">
-            <div class="bar" style="width:32px;background:var(--amber)"></div>
-            <span class="bar-val v-amber">6.0%</span>
-          </div>
-        </td>
-        <td class="v-amber">0.45%</td>
-        <td class="v-amber">7.6%</td>
-      </tr>
-      <tr>
-        <td>DatingKorea</td>
-        <td>10,125</td>
-        <td>387</td>
-        <td>127</td>
-        <td>514</td>
-        <td>
-          <div class="bar-wrap">
-            <div class="bar" style="width:27px;background:var(--amber)"></div>
-            <span class="bar-val v-amber">5.1%</span>
-          </div>
-        </td>
-        <td class="v-amber">0.46%</td>
-        <td class="v-amber">9.1%</td>
-      </tr>
-      <tr>
-        <td>FeelsJapan</td>
-        <td>10,393</td>
-        <td>248</td>
-        <td>88</td>
-        <td>336</td>
-        <td>
-          <div class="bar-wrap">
-            <div class="bar" style="width:17px;background:var(--red)"></div>
-            <span class="bar-val v-red">3.2%</span>
-          </div>
-        </td>
-        <td class="v-red">0.34%</td>
-        <td class="v-red">10.4%</td>
-      </tr>
-      <tr>
-        <td>AsianLove</td>
-        <td>7,547</td>
-        <td>96</td>
-        <td>27</td>
-        <td>123</td>
-        <td>
-          <div class="bar-wrap">
-            <div class="bar" style="width:8px;background:var(--red)"></div>
-            <span class="bar-val v-red">1.6%</span>
-          </div>
-        </td>
-        <td class="v-red">0.11%</td>
-        <td class="v-red">6.5%</td>
-      </tr>
-      <tr>
-        <td>Romance</td>
-        <td>3,129</td>
-        <td>32</td>
-        <td>8</td>
-        <td>40</td>
-        <td>
-          <div class="bar-wrap">
-            <div class="bar" style="width:7px;background:var(--red)"></div>
-            <span class="bar-val v-red">1.3%</span>
-          </div>
-        </td>
-        <td class="v-red">0.13%</td>
-        <td v-red>10.0%</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="insight">
-    <div class="insight-label">Інсайт</div>
-    <div class="insight-text">Sale/Intent ratio (скільки з тих хто показав інтерес врешті купили) — стабільно 7–10% по всіх офферах. Це означає що проблема не в якості intent, а в тому скільки людей доходять до intent. FeelsAsian генерує 13.2% intent з кліків, AsianLove лише 1.6% — в 8 разів менше.</div>
-  </div>
-</div>
-
-<!-- POV C: COST PER ENGAGEMENT -->
-<div class="section">
-  <div class="sec-title">
-    <div class="sec-dot" style="background:var(--amber)"></div>
-    POV C — Cost per Engagement (якщо CPC $1.80 — скільки коштує кожна дія)
-  </div>
-  <div class="grid3">
-    <div class="card">
-      <div class="card-label">Assumed CPC (Google Ads)</div>
-      <div class="card-val" style="color:var(--amber)">$1.80</div>
-      <div class="card-sub">dating niche, US market benchmark</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Cost per Lead (CPL)</div>
-      <div class="card-val" style="color:var(--red)">$31.03</div>
-      <div class="card-sub">$1.80 / 5.8% CR click→lead</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Cost per Sale (CPS/CAC)</div>
-      <div class="card-val" style="color:var(--red)">$260.87</div>
-      <div class="card-sub">$1.80 / 0.69% CR click→sale</div>
+  <!-- БАЗОВІ ЗАЛЕЖНОСТІ З ДАТАСЕТУ -->
+  <div style="margin-bottom:32px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);">Датасет — реальні дані за 1 місяць</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;">Кліки</div>
+        <div style="font-size:18px;font-weight:800;color:var(--blue)">70,776</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">на партнерів</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;">Sales</div>
+        <div style="font-size:18px;font-weight:800;color:var(--amber)">490</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">FTD покупки</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;">Revenue</div>
+        <div style="font-size:18px;font-weight:800;color:var(--green)">$364,010</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">комісія</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;">EPC</div>
+        <div style="font-size:18px;font-weight:800;color:var(--green)">$5.14</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">revenue / click</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(46,204,113,.25);border-radius:8px;padding:12px 14px;background:var(--gdim);">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;">CPA / sale</div>
+        <div style="font-size:18px;font-weight:800;color:var(--green)">$743</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px">виплата партнером</div>
+      </div>
     </div>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Оффер</th>
-        <th>CR click→lead</th>
-        <th>CPL @ $1.80</th>
-        <th>CR click→sale</th>
-        <th>CPS @ $1.80</th>
-        <th>RPC</th>
-        <th>Margin/click</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>FeelsAsian</td>
-        <td class="v-green">9.80%</td>
-        <td class="v-green">$18.37</td>
-        <td class="v-green">1.22%</td>
-        <td class="v-green">$147.18</td>
-        <td class="v-green">$9.17</td>
-        <td class="v-green">+$7.37</td>
-      </tr>
-      <tr>
-        <td>ThaiDates</td>
-        <td class="v-amber">6.06%</td>
-        <td class="v-amber">$29.70</td>
-        <td class="v-amber">0.52%</td>
-        <td class="v-amber">$346.15</td>
-        <td class="v-amber">$3.89</td>
-        <td class="v-red">+$2.09</td>
-      </tr>
-      <tr>
-        <td>DatingKorea</td>
-        <td class="v-amber">3.82%</td>
-        <td>$47.12</td>
-        <td class="v-amber">0.46%</td>
-        <td>$391.30</td>
-        <td class="v-amber">$3.37</td>
-        <td class="v-red">+$1.57</td>
-      </tr>
-      <tr>
-        <td>EasternDate</td>
-        <td class="v-amber">4.76%</td>
-        <td>$37.82</td>
-        <td class="v-amber">0.45%</td>
-        <td>$400.00</td>
-        <td class="v-amber">$3.22</td>
-        <td class="v-red">+$1.42</td>
-      </tr>
-      <tr>
-        <td>FeelsJapan</td>
-        <td class="v-red">2.39%</td>
-        <td class="v-red">$75.31</td>
-        <td class="v-red">0.34%</td>
-        <td class="v-red">$529.41</td>
-        <td class="v-amber">$2.46</td>
-        <td class="v-red">+$0.66</td>
-      </tr>
-      <tr>
-        <td>Romance</td>
-        <td class="v-red">1.02%</td>
-        <td class="v-red">$176.47</td>
-        <td class="v-red">0.13%</td>
-        <td class="v-red">$1,384.62</td>
-        <td class="v-red">$0.91</td>
-        <td class="v-red">-$0.89</td>
-      </tr>
-      <tr>
-        <td>AsianLove</td>
-        <td class="v-red">1.27%</td>
-        <td class="v-red">$141.73</td>
-        <td class="v-red">0.11%</td>
-        <td class="v-red">$1,636.36</td>
-        <td class="v-red">$0.75</td>
-        <td class="v-red">-$1.05</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="insight">
-    <div class="insight-label">Інсайт</div>
-    <div class="insight-text">При CPC $1.80 тільки <b>FeelsAsian прибутковий</b> (+$7.37/click margin). Всі інші або ледь в плюсі (+$1-2), або в мінусі. Romance і AsianLove збиткові навіть без урахування overhead. Це підтверджує правильність пріоритизації: FeelsAsian на позиції 1 — не випадковість, це єдиний оффер що окупає закупівлю трафіку.</div>
-  </div>
-</div>
 
-<!-- POV D: WEIGHTED SCORE -->
-<div class="section">
-  <div class="sec-title">
-    <div class="sec-dot" style="background:var(--purple)"></div>
-    POV D — Вагова модель (RPC × 0.4 + CR_lead × 0.3 + CR_sale × 0.3, нормалізовано)
+  <!-- ГІПОТЕЗА: СКІЛЬКИ КОШТУВАВ ТРАФІК -->
+  <div style="margin-bottom:32px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border);">Гіпотеза — скільки коштував цей трафік</div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:720px;margin-bottom:16px;">
+      Ми знаємо 70,776 кліків. Implied visits = clicks / CTR. При різних CTR і CPC — рахуємо implied spend і порівнюємо з реальним revenue.
+    </p>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>CTR</th>
+          <th>CPC</th>
+          <th>Implied visits</th>
+          <th>Implied spend</th>
+          <th>Revenue</th>
+          <th>Profit</th>
+          <th>ROAS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="mono">15%</td><td class="mono">$1.50</td><td class="mono">471,840</td><td class="mono v-red">$707,760</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$343,750</td><td class="mono v-red">0.51x</td></tr>
+        <tr><td class="mono">15%</td><td class="mono">$2.00</td><td class="mono">471,840</td><td class="mono v-red">$943,680</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$579,670</td><td class="mono v-red">0.39x</td></tr>
+        <tr><td class="mono">15%</td><td class="mono">$2.50</td><td class="mono">471,840</td><td class="mono v-red">$1,179,600</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$815,590</td><td class="mono v-red">0.31x</td></tr>
+        <tr style="border-top:2px solid var(--border)"><td class="mono">20%</td><td class="mono">$1.50</td><td class="mono">353,880</td><td class="mono v-red">$530,820</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$166,810</td><td class="mono v-red">0.69x</td></tr>
+        <tr><td class="mono">20%</td><td class="mono">$2.00</td><td class="mono">353,880</td><td class="mono v-red">$707,760</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$343,750</td><td class="mono v-red">0.51x</td></tr>
+        <tr><td class="mono">20%</td><td class="mono">$2.50</td><td class="mono">353,880</td><td class="mono v-red">$884,700</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$520,690</td><td class="mono v-red">0.41x</td></tr>
+        <tr style="border-top:2px solid var(--border)"><td class="mono">25%</td><td class="mono">$1.50</td><td class="mono">283,104</td><td class="mono v-red">$424,656</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$60,646</td><td class="mono v-red">0.86x</td></tr>
+        <tr><td class="mono">25%</td><td class="mono">$2.00</td><td class="mono">283,104</td><td class="mono v-red">$566,208</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$202,198</td><td class="mono v-red">0.64x</td></tr>
+        <tr><td class="mono">25%</td><td class="mono">$2.50</td><td class="mono">283,104</td><td class="mono v-red">$707,760</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$343,750</td><td class="mono v-red">0.51x</td></tr>
+        <tr style="border-top:2px solid var(--border)"><td class="mono v-green"><strong>30%</strong></td><td class="mono v-green"><strong>$1.50</strong></td><td class="mono">235,920</td><td class="mono v-amber">$353,880</td><td class="mono v-green">$364,010</td><td class="mono v-green"><strong>+$10,130</strong></td><td class="mono v-green"><strong>1.03x ✅</strong></td></tr>
+        <tr><td class="mono">30%</td><td class="mono">$2.00</td><td class="mono">235,920</td><td class="mono v-red">$471,840</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$107,830</td><td class="mono v-red">0.77x</td></tr>
+        <tr><td class="mono">30%</td><td class="mono">$2.50</td><td class="mono">235,920</td><td class="mono v-red">$589,800</td><td class="mono v-green">$364,010</td><td class="mono v-red">-$225,790</td><td class="mono v-red">0.62x</td></tr>
+      </tbody>
+    </table>
+    </div>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Оффер</th>
-        <th>RPC score</th>
-        <th>CR lead score</th>
-        <th>CR sale score</th>
-        <th>Weighted</th>
-        <th>Рекомендація позиції</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="rank r1">1</span></td>
-        <td>FeelsAsian</td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:100%;background:var(--green)"></div>
-          </div>
-          <span class="v-green mono" style="font-size:11px">1.000</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:100%;background:var(--green)"></div>
-          </div>
-          <span class="v-green mono" style="font-size:11px">1.000</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:100%;background:var(--green)"></div>
-          </div>
-          <span class="v-green mono" style="font-size:11px">1.000</span>
-        </td>
-        <td class="v-green mono">0.997</td>
-        <td><span class="pill p-green">Позиція 1 — лишити</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r2">2</span></td>
-        <td>ThaiDates</td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:42%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.424</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:62%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.620</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:42%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.419</span>
-        </td>
-        <td class="v-amber mono">0.482</td>
-        <td><span class="pill p-amber">Позиція 2 — лишити</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r3">3</span></td>
-        <td>EasternDate</td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:35%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.351</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:49%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.486</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:36%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.366</span>
-        </td>
-        <td class="v-amber mono">0.396</td>
-        <td><span class="pill p-blue">Підняти з 5 на 3</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r3">4</span></td>
-        <td>DatingKorea</td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:37%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.367</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:39%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.388</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:38%;background:var(--amber)"></div>
-          </div>
-          <span class="v-amber mono" style="font-size:11px">0.374</span>
-        </td>
-        <td class="v-amber mono">0.376</td>
-        <td><span class="pill p-amber">Позиція 4 — ок</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r-low">5</span></td>
-        <td>FeelsJapan</td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:27%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.268</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:24%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.244</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:27%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.274</span>
-        </td>
-        <td class="v-red mono">0.262</td>
-        <td><span class="pill p-red">Опустити на 5-6</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r-low">6</span></td>
-        <td>Romance</td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:10%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.099</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:10%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.102</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:10%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.105</span>
-        </td>
-        <td class="v-red mono">0.102</td>
-        <td><span class="pill p-red">Виключити або замінити</span></td>
-      </tr>
-      <tr>
-        <td><span class="rank r-low">7</span></td>
-        <td>AsianLove</td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:8%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.082</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:13%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.130</span>
-        </td>
-        <td>
-          <div class="weight-bar-wrap" style="width:80px">
-            <div class="weight-bar-fill" style="width:9%;background:var(--red)"></div>
-          </div>
-          <span class="v-red mono" style="font-size:11px">0.085</span>
-        </td>
-        <td class="v-red mono">0.097</td>
-        <td><span class="pill p-red">Виключити</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
-<!-- FINAL SUMMARY -->
-<div class="section">
-  <div class="sec-title">
-    <div class="sec-dot" style="background:var(--teal)"></div>
-    Зведений висновок — що кажуть всі 4 POV разом
+  <!-- ТОЧКА БЕЗЗБИТКОВОСТІ -->
+  <div style="margin-bottom:32px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);">Точка беззбитковості (ROAS = 1x)</div>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>CPC</th>
+          <th>Spend = Revenue</th>
+          <th>Break-even visits</th>
+          <th style="color:var(--green)">Break-even CTR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="mono"><strong>$1.50</strong></td><td class="mono">$364,010</td><td class="mono">242,673</td><td class="mono v-green"><strong>29.2%</strong></td></tr>
+        <tr><td class="mono"><strong>$2.00</strong></td><td class="mono">$364,010</td><td class="mono">182,005</td><td class="mono v-amber"><strong>38.9%</strong></td></tr>
+        <tr><td class="mono"><strong>$2.50</strong></td><td class="mono">$364,010</td><td class="mono">145,604</td><td class="mono v-red"><strong>48.6%</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="background:var(--adim);border:1px solid rgba(245,166,35,.2);border-radius:8px;padding:12px 16px;margin-top:12px;">
+      <p style="font-size:13px;color:#e8c870;line-height:1.65;">
+        При CPC $1.50 і CTR 30% — трафік майже окупається (ROAS 1.03x). Єдиний прибутковий сценарій. При CPC $2+ потрібен CTR 39-49%, що нереалістично. Звідси і потреба в репріоритизації офферів — щоб максимізувати revenue з наявних кліків.
+      </p>
+    </div>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Оффер</th>
-        <th>POV A (RPC)</th>
-        <th>POV B (Intent CR)</th>
-        <th>POV C (Margin)</th>
-        <th>POV D (Weighted)</th>
-        <th>Консенсус</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>FeelsAsian</b></td>
-        <td><span class="pill p-green">#1</span></td>
-        <td><span class="pill p-green">#1 13.2%</span></td>
-        <td><span class="pill p-green">+$7.37/clk</span></td>
-        <td><span class="pill p-green">0.997</span></td>
-        <td><span class="pill p-green">Позиція 1 ✓</span></td>
-      </tr>
-      <tr>
-        <td><b>ThaiDates</b></td>
-        <td><span class="pill p-green">#2</span></td>
-        <td><span class="pill p-amber">#2 7.5%</span></td>
-        <td><span class="pill p-amber">+$2.09/clk</span></td>
-        <td><span class="pill p-amber">0.482</span></td>
-        <td><span class="pill p-amber">Позиція 2 ✓</span></td>
-      </tr>
-      <tr>
-        <td><b>EasternDate</b></td>
-        <td><span class="pill p-amber">#4</span></td>
-        <td><span class="pill p-amber">#3 6.0%</span></td>
-        <td><span class="pill p-amber">+$1.42/clk</span></td>
-        <td><span class="pill p-purple">#3 0.396</span></td>
-        <td><span class="pill p-blue">↑ Підняти на 3</span></td>
-      </tr>
-      <tr>
-        <td><b>DatingKorea</b></td>
-        <td><span class="pill p-amber">#3</span></td>
-        <td><span class="pill p-amber">#4 5.1%</span></td>
-        <td><span class="pill p-amber">+$1.57/clk</span></td>
-        <td><span class="pill p-amber">#4 0.376</span></td>
-        <td><span class="pill p-amber">Позиція 4 ✓</span></td>
-      </tr>
-      <tr>
-        <td><b>FeelsJapan</b></td>
-        <td><span class="pill p-red">#5</span></td>
-        <td><span class="pill p-red">#5 3.2%</span></td>
-        <td><span class="pill p-red">+$0.66/clk</span></td>
-        <td><span class="pill p-red">#5 0.262</span></td>
-        <td><span class="pill p-red">↓ Опустити на 5-6</span></td>
-      </tr>
-      <tr>
-        <td><b>Romance</b></td>
-        <td><span class="pill p-red">#6</span></td>
-        <td><span class="pill p-red">#7 1.3%</span></td>
-        <td><span class="pill p-red">-$0.89/clk</span></td>
-        <td><span class="pill p-red">#6 0.102</span></td>
-        <td><span class="pill p-red">Замінити</span></td>
-      </tr>
-      <tr>
-        <td><b>AsianLove</b></td>
-        <td><span class="pill p-red">#7</span></td>
-        <td><span class="pill p-red">#6 1.6%</span></td>
-        <td><span class="pill p-red">-$1.05/clk</span></td>
-        <td><span class="pill p-red">#7 0.097</span></td>
-        <td><span class="pill p-red">Виключити</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
+  <!-- EPC ПО ОФФЕРАХ — РЕПРІОРИТИЗАЦІЯ -->
+  <div style="margin-bottom:32px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border);">EPC по офферах — репріоритизація @ CPC $2.00, CTR 20%</div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:720px;margin-bottom:16px;">
+      Implied spend на кожен оффер = (clicks / CTR 20%) × $2.00. Порівнюємо з реальним revenue оффера.
+    </p>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left">Оффер</th>
+          <th>Clicks</th>
+          <th>Sales</th>
+          <th>Revenue</th>
+          <th>EPC</th>
+          <th>Implied spend</th>
+          <th>Profit</th>
+          <th>ROAS</th>
+          <th>Рекомендація</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>FeelsAsian</strong></td>
+          <td class="mono">27,290</td><td class="mono">334</td>
+          <td class="mono v-green">$250,255</td>
+          <td class="mono v-green"><strong>$9.17</strong></td>
+          <td class="mono">$272,900</td>
+          <td class="mono v-red">-$22,645</td>
+          <td class="mono v-amber">0.92x</td>
+          <td><span style="background:var(--gdim);color:var(--green);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;">✅ Позиція 1</span></td>
+        </tr>
+        <tr>
+          <td><strong>ThaiDates</strong></td>
+          <td class="mono">8,765</td><td class="mono">46</td>
+          <td class="mono v-green">$34,128</td>
+          <td class="mono v-green"><strong>$3.89</strong></td>
+          <td class="mono">$87,650</td>
+          <td class="mono v-red">-$53,522</td>
+          <td class="mono v-red">0.39x</td>
+          <td><span style="background:var(--adim);color:var(--amber);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;">⚠️ Позиція 2</span></td>
+        </tr>
+        <tr>
+          <td><strong>EasternDate</strong></td>
+          <td class="mono">3,527</td><td class="mono">16</td>
+          <td class="mono">$11,374</td>
+          <td class="mono v-amber"><strong>$3.22</strong></td>
+          <td class="mono">$35,270</td>
+          <td class="mono v-red">-$23,896</td>
+          <td class="mono v-red">0.32x</td>
+          <td><span style="background:var(--bdim);color:var(--blue);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;">↑ Підняти на 3</span></td>
+        </tr>
+        <tr>
+          <td><strong>DatingKorea</strong></td>
+          <td class="mono">10,125</td><td class="mono">47</td>
+          <td class="mono">$34,128</td>
+          <td class="mono v-amber"><strong>$3.37</strong></td>
+          <td class="mono">$101,250</td>
+          <td class="mono v-red">-$67,122</td>
+          <td class="mono v-red">0.34x</td>
+          <td><span style="background:var(--adim);color:var(--amber);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;">⚠️ Позиція 4</span></td>
+        </tr>
+        <tr>
+          <td><strong>FeelsJapan</strong></td>
+          <td class="mono">10,393</td><td class="mono">35</td>
+          <td class="mono">$25,594</td>
+          <td class="mono v-red"><strong>$2.46</strong></td>
+          <td class="mono">$103,930</td>
+          <td class="mono v-red">-$78,336</td>
+          <td class="mono v-red">0.25x</td>
+          <td><span style="background:var(--rdim);color:var(--red);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;">↓ Опустити</span></td>
+        </tr>
+        <tr>
+          <td><strong>Romance</strong></td>
+          <td class="mono">3,129</td><td class="mono">4</td>
+          <td class="mono v-red">$2,844</td>
+          <td class="mono v-red"><strong>$0.91</strong></td>
+          <td class="mono">$31,290</td>
+          <td class="mono v-red">-$28,446</td>
+          <td class="mono v-red">0.09x</td>
+          <td><span style="background:var(--rdim);color:var(--red);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;">❌ Виключити</span></td>
+        </tr>
+        <tr>
+          <td><strong>AsianLove</strong></td>
+          <td class="mono">7,547</td><td class="mono">8</td>
+          <td class="mono v-red">$5,687</td>
+          <td class="mono v-red"><strong>$0.75</strong></td>
+          <td class="mono">$75,470</td>
+          <td class="mono v-red">-$69,783</td>
+          <td class="mono v-red">0.08x</td>
+          <td><span style="background:var(--rdim);color:var(--red);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;">❌ Виключити</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ФІНАЛЬНИЙ ВИСНОВОК -->
+  <div style="background:var(--gdim);border:1px solid rgba(46,204,113,.2);border-radius:10px;padding:18px 20px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">Висновок — репріоритизація</div>
+    <p style="font-size:13px;color:#a8e6c0;line-height:1.7;">
+      При будь-якому CPC весь портфель збитковий. Але FeelsAsian (EPC $9.17, ROAS 0.92x) — майже окупається і генерує 69% всього revenue. Romance і AsianLove з EPC $0.75–0.91 — збиток на кожен клік. <strong>Правильний хід: сконцентрувати трафік на FeelsAsian і ThaiDates, виключити Romance і AsianLove, підняти EasternDate на позицію 3.</strong> Це збільшить revenue без зростання spend.
+    </p>
+  </div>
+
+</div>
 </body>
 </html>
