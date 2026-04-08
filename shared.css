@@ -43,3 +43,17 @@ nav#main-nav {
 .task-answer { font-size: 12px; color: var(--muted); background: var(--s2); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; display: flex; align-items: center; gap: 6px; line-height: 1.4; }
 .task-answer .ans-key { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; }
 .task-answer .ans-val { color: var(--text); font-weight: 500; }
+
+.task-summary-text { font-size: 13px; color: #b0ada6; line-height: 1.75; max-width: 760px; }
+
+.real-data-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; margin-top: 14px;
+}
+.rdi { background: var(--s2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.rdi-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.rdi-val { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1; }
+.rdi-val.g { color: var(--green); }
+.rdi-val.r { color: var(--red); }
+.rdi-val.a { color: var(--amber); }
+.rdi-sub { font-size: 10px; color: var(--muted); margin-top: 3px; font-family: 'IBM Plex Mono', monospace; }

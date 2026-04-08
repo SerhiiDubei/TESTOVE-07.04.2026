@@ -145,16 +145,56 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
   <div class="task-summary-inner">
     <div class="task-summary-top">
       <span class="task-num">Завдання 02 · Аналітика</span>
-      <span class="task-title">Перформанс thedatingcritic.com — Unit Economics</span>
     </div>
-    <div class="task-answers">
-      <div class="task-answer"><span class="ans-key">Трафік</span><span class="ans-val">81,136 відвідувачів/міс (SimilarWeb, берез. 2026)</span></div>
-      <div class="task-answer"><span class="ans-key">Канали</span><span class="ans-val">79.3% Paid Search — органіки лише 3.4%</span></div>
-      <div class="task-answer"><span class="ans-key">Bounce Rate</span><span class="ans-val">58.7% · Visit duration 1:12 хв</span></div>
-      <div class="task-answer"><span class="ans-key">Revenue модель</span><span class="ans-val">CPA ~$711–749 per FTD (виявлено з датасету)</span></div>
-      <div class="task-answer"><span class="ans-key">ROAS</span><span class="ans-val">Збитковий при поточних CR без оптимізації воронки</span></div>
+    <p class="task-summary-text">
+      З публічно доступних джерел є дані SimilarWeb — 81 тисяча відвідувачів за березень 2026, з яких 79% платний пошук і лише 3.4% органіка. Теоретично можна було б достати глибші дані через платні інструменти або outgoing traffic по партнерах, але більшість з них не показують реферал через redirect без передачі referrer. Тому unit economics я будував на базі реального датасету з третього завдання — він дає CR і RPC які важливіші за трафікові цифри.
+      <br><br>
+      Головний інсайт: при CPC $1.80 для dating-ніші в США максимальний беззбитковий CPC = $0.53 — тобто при поточних конверсіях воронка збиткова в будь-якому сценарії. Це не означає що сайт не заробляє — він заробляє на органіці та прямому трафіку. Але масштабувати платну закупівлю без покращення CR немає сенсу.
+    </p>
+    <div class="real-data-grid">
+      <div class="rdi">
+        <div class="rdi-label">Visits / міс</div>
+        <div class="rdi-val a">81,136</div>
+        <div class="rdi-sub">SimilarWeb, берез. 2026</div>
+      </div>
+      <div class="rdi">
+        <div class="rdi-label">Paid Search</div>
+        <div class="rdi-val r">79.3%</div>
+        <div class="rdi-sub">Органіка лише 3.4%</div>
+      </div>
+      <div class="rdi">
+        <div class="rdi-label">Bounce Rate</div>
+        <div class="rdi-val r">58.7%</div>
+        <div class="rdi-sub">Session 1:12 хв</div>
+      </div>
+      <div class="rdi">
+        <div class="rdi-label">Max беззбитк. CPC</div>
+        <div class="rdi-val r">$0.53</div>
+        <div class="rdi-sub">При поточних CR</div>
+      </div>
+      <div class="rdi">
+        <div class="rdi-label">Revenue / міс (pred.)</div>
+        <div class="rdi-val g">~$34K</div>
+        <div class="rdi-sub">З датасету: RPC $5.14</div>
+      </div>
+      <div class="rdi">
+        <div class="rdi-label">CPA per sale</div>
+        <div class="rdi-val">~$743</div>
+        <div class="rdi-sub">З датасету (реальний)</div>
+      </div>
+      <div class="rdi">
+        <div class="rdi-label">CR click → sale</div>
+        <div class="rdi-val">0.69%</div>
+        <div class="rdi-sub">З датасету (реальний)</div>
+      </div>
+      <div class="rdi">
+        <div class="rdi-label">ROAS @ $1.80 CPC</div>
+        <div class="rdi-val r">0.29x</div>
+        <div class="rdi-sub">Збитковий без оптимізації</div>
+      </div>
     </div>
   </div>
+</div>
 </div>
 
 <div class="header">

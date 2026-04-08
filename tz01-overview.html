@@ -397,17 +397,12 @@
 
 <div class="task-summary">
   <div class="task-summary-inner">
-    <div class="task-summary-top">
-      <span class="task-num">Завдання 01</span>
-      <span class="task-title">Google Ads Integration — схема інтеграції</span>
-    </div>
-    <div class="task-answers">
-      <div class="task-answer"><span class="ans-key">Флоу</span><span class="ans-val">2 незалежних: push (конверсії → Google Ads) + pull (статистика з кабінету)</span></div>
-      <div class="task-answer"><span class="ans-key">Ключовий ID</span><span class="ans-val">gclid → click_id (subid) → постбек → Google Ads API</span></div>
-      <div class="task-answer"><span class="ans-key">Підводні камені</span><span class="ans-val">GCLID губиться в Safari / інкогніто → Enhanced Conversions як fallback</span></div>
-      <div class="task-answer"><span class="ans-key">Джойн для аналітики</span><span class="ans-val">campaign_id + date → spend (Флоу B) ↔ revenue (Флоу A)</span></div>
-    </div>
+    <div class="task-summary-top"><span class="task-num">Завдання 01</span></div>
+    <p class="task-summary-text">
+      Тут два окремих завдання в одному: перше — щоб Google Ads бачив конверсії і міг оптимізувати покази, друге — щоб ми самі бачили скільки витратили і яка віддача. Це різні флоу і змішувати їх не можна. Основна ідея — зловити gclid при вході користувача, прокинути його через всю воронку як click_id до партнера, а коли партнер поверне постбек — знайти цей gclid і відправити конверсію назад в Google. Окремо щодня тягнемо витрати з кабінету і з'єднуємо з нашими конверсіями по campaign_id і даті — тільки так можна побачити реальний ROAS. Один нюанс який важливо не пропустити — gclid пропадає якщо людина відкрила сайт в Safari або інкогніто, тому потрібен запасний варіант через хешований email.
+    </p>
   </div>
+</div>
 </div>
 <div class="header">
   <div class="header-tag">Завдання 01 · AdConnect · Квітень 2026</div>

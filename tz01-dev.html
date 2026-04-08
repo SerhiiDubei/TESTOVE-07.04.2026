@@ -302,16 +302,12 @@
 
 <div class="task-summary">
   <div class="task-summary-inner">
-    <div class="task-summary-top">
-      <span class="task-num">Завдання 01</span>
-      <span class="task-title">Google Ads Integration — Dev Spec для розробників</span>
-    </div>
-    <div class="task-answers">
-      <div class="task-answer"><span class="ans-key">Фаз</span><span class="ans-val">5 фаз: GCLID capture → click track → postback → Google Ads API → ETL stats</span></div>
-      <div class="task-answer"><span class="ans-key">Структура</span><span class="ans-val">Problem / Solve / Code / Tips / Acceptance Criteria для кожної фази</span></div>
-      <div class="task-answer"><span class="ans-key">Терміни</span><span class="ans-val">~8-10 робочих днів на повну інтеграцію</span></div>
-    </div>
+    <div class="task-summary-top"><span class="task-num">Завдання 01 · Dev Spec</span></div>
+    <p class="task-summary-text">
+      Внизу — детальне ТЗ яке я б кинув розробнику. Якщо коротко: треба зловити gclid при вході, прив'язати його до кліку на партнера через унікальний click_id, прийняти постбек від партнера і відправити конверсію в Google Ads. Плюс окремо — щоденний збір статистики з кабінету щоб зводити витрати з доходом в одній таблиці. Таску можна легко розкласти з Claude — він генерує весь цей boilerplate за хвилини, але важливо розуміти логіку флоу щоб правильно поставити задачу.
+    </p>
   </div>
+</div>
 </div>
 <div class="doc-header">
   <div class="doc-tag">
