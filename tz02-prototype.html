@@ -358,10 +358,9 @@ h1 {
   <div class="task-summary-inner">
     <div class="task-summary-top"><span class="task-num">Завдання 02 · Механіка #1</span></div>
     <p class="task-summary-text">
-      Зараз всі картки на сайті виглядають однаково — у кожного з топ-3 офферів стоїть 9.6 Premium, і людина не розуміє чим вони різняться. Ідея проста: розбити загальний рейтинг на 5 підкритеріїв з кольоровими індикаторами і додати вкладки з деталями. Аналог — PCMag, CNET, Wirecutter. Людина одразу бачить де сайт сильний, а де слабкий, і приймає рішення клікнути швидше бо довіри більше.
+      Підхід простий: якщо людина не може порівняти — вона не клікає. Зараз у всіх топ-3 офферів однаковий рейтинг 9.6 Premium і незрозуміло в чому різниця. Я розбив загальну оцінку на 5 підкритеріїв з кольоровими індикаторами — зелений де сильно, червоний де слабко. Плюс вкладки з деталями, ціною і плюсами-мінусами щоб людина могла глибше зайти якщо хоче. Аналог цього підходу — PCMag і CNET. Ідея в тому що прозорість рейтингу збільшує довіру, а довіра збільшує CTR.
     </p>
   </div>
-</div>
 </div>
 
 <div class="page-wrap">
@@ -722,9 +721,10 @@ h1 {
 function switchTab(btn, cardId, panel) {
   const card = btn.closest('.card-right');
   card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  card.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  card.querySelectorAll('.tab-panel').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
   btn.classList.add('active');
-  document.getElementById(cardId + '-' + panel).classList.add('active');
+  const target = document.getElementById(cardId + '-' + panel);
+  if (target) { target.classList.add('active'); target.style.display = 'flex'; }
 }
 </script>
 
