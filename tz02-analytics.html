@@ -172,297 +172,129 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 </div>
 
 <!-- SECTION 1: SOURCE DATA -->
-<div class="section">
-  <div class="section-title">
-    <div class="dot" style="background:var(--green)"></div>
-    Реальні дані з датасету
-  </div>
-  <div class="metrics-grid">
-    <div class="metric-card blue">
-      <div class="metric-label">Total clicks</div>
-      <div class="metric-value blue">70,776</div>
-      <div class="metric-sub">на партнерів (датасет)</div>
-    </div>
-    <div class="metric-card green">
-      <div class="metric-label">Total leads</div>
-      <div class="metric-value green">4,140</div>
-      <div class="metric-sub">реєстрації на партнерах</div>
-    </div>
-    <div class="metric-card amber">
-      <div class="metric-label">Total sales</div>
-      <div class="metric-value amber">490</div>
-      <div class="metric-sub">покупок кредитів (FTD)</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-label">Total revenue</div>
-      <div class="metric-value white">$364,010</div>
-      <div class="metric-sub">комісія від партнерів</div>
-    </div>
-  </div>
-  <div class="metrics-grid">
-    <div class="metric-card green">
-      <div class="metric-label">RPC</div>
-      <div class="metric-value green">$5.14</div>
-      <div class="metric-sub">revenue per click</div>
-    </div>
-    <div class="metric-card amber">
-      <div class="metric-label">RPL</div>
-      <div class="metric-value amber">$87.93</div>
-      <div class="metric-sub">revenue per lead</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-label">RPS</div>
-      <div class="metric-value white">$742</div>
-      <div class="metric-sub">revenue per sale</div>
-    </div>
-    <div class="metric-card blue">
-      <div class="metric-label">FeelsAsian RPC</div>
-      <div class="metric-value blue">$9.17</div>
-      <div class="metric-sub">#1 offer, pos 1</div>
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 2: FUNNEL -->
+<!-- UNIT ECONOMICS SECTION — REPLACE IN tz02-analytics.html -->
 <div class="section">
   <div class="section-title">
     <div class="dot" style="background:var(--blue)"></div>
-    Воронка (на основі реальних CR з датасету)
+    Як я думав — покрокова логіка
   </div>
-  <div class="funnel">
-    <div class="funnel-step">
-      <div class="funnel-box">
-        <div class="funnel-name">Трафік/міс</div>
-        <div class="funnel-num">81,136</div>
-        <div class="funnel-cr mid">SimilarWeb</div>
-      </div>
-    </div>
-    <div class="funnel-arrow">→</div>
-    <div class="funnel-step">
-      <div class="funnel-box">
-        <div class="funnel-name">Engaged (не bounce)</div>
-        <div class="funnel-num">33,510</div>
-        <div class="funnel-cr mid">41.3% CR</div>
-      </div>
-    </div>
-    <div class="funnel-arrow">→</div>
-    <div class="funnel-step">
-      <div class="funnel-box">
-        <div class="funnel-name">Кліки на партнерів</div>
-        <div class="funnel-num">~8,378</div>
-        <div class="funnel-cr mid">~25% CTR</div>
-      </div>
-    </div>
-    <div class="funnel-arrow">→</div>
-    <div class="funnel-step">
-      <div class="funnel-box">
-        <div class="funnel-name">Реєстрації</div>
-        <div class="funnel-num">~490</div>
-        <div class="funnel-cr good">5.8% CR</div>
-      </div>
-    </div>
-    <div class="funnel-arrow">→</div>
-    <div class="funnel-step">
-      <div class="funnel-box">
-        <div class="funnel-name">Покупки (FTD)</div>
-        <div class="funnel-num">~58</div>
-        <div class="funnel-cr mid">11.8% CR</div>
-      </div>
-    </div>
-    <div class="funnel-arrow">→</div>
-    <div class="funnel-step">
-      <div class="funnel-box">
-        <div class="funnel-name">Revenue/міс</div>
-        <div class="funnel-num">~$43K</div>
-        <div class="funnel-cr good">RPC $5.14</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 3: SIMILARWEB -->
-<div class="section">
-  <div class="section-title">
-    <div class="dot" style="background:var(--amber)"></div>
-    SimilarWeb — березень 2026 (реальні дані)
-  </div>
-  <div class="metrics-grid">
-    <div class="metric-card amber">
-      <div class="metric-label">Monthly visits</div>
-      <div class="metric-value amber">81,136</div>
-      <div class="metric-sub">-1.63% vs попередній місяць</div>
-    </div>
-    <div class="metric-card red">
-      <div class="metric-label">Paid Search</div>
-      <div class="metric-value red">79.3%</div>
-      <div class="metric-sub">основне джерело трафіку</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-label">Organic Search</div>
-      <div class="metric-value white">3.4%</div>
-      <div class="metric-sub">дуже низько для review сайту</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-label">Bounce Rate</div>
-      <div class="metric-value white">58.7%</div>
-      <div class="metric-sub">Visit duration: 1:12 хв</div>
-    </div>
-  </div>
-
-  <table style="margin-top:14px;">
-    <thead>
-      <tr>
-        <th>Канал</th>
-        <th>Частка</th>
-        <th>Visits/міс</th>
-        <th>Статус</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Paid Search (Google Ads)</td>
-        <td class="mono red-text">79.27%</td>
-        <td class="mono">64,315</td>
-        <td><span style="background:var(--red-dim);color:var(--red);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Висока залежність</span></td>
-      </tr>
-      <tr>
-        <td>Direct</td>
-        <td class="mono">13.46%</td>
-        <td class="mono">10,921</td>
-        <td><span style="background:var(--green-dim);color:var(--green);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Хороший сигнал</span></td>
-      </tr>
-      <tr>
-        <td>Social</td>
-        <td class="mono">2.57%</td>
-        <td class="mono">2,085</td>
-        <td><span style="background:var(--amber-dim);color:var(--amber);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Потенціал росту</span></td>
-      </tr>
-      <tr>
-        <td>Organic Search</td>
-        <td class="mono red-text">3.38%</td>
-        <td class="mono">2,744</td>
-        <td><span style="background:var(--red-dim);color:var(--red);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Критично низько</span></td>
-      </tr>
-      <tr>
-        <td>Referrals</td>
-        <td class="mono">&lt;1%</td>
-        <td class="mono">~811</td>
-        <td><span style="background:var(--border);color:var(--muted);padding:2px 8px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;">Redirect без referrer</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<div class="section">
-  <div class="section-title">
-    <div class="dot" style="background:var(--purple)"></div>
-    3 сценарії CTR — implied visits → spend → CAC → порівняння з EPC
-  </div>
-  <p style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6;">
-    <strong style="color:var(--text)">Методологія:</strong> датасет дає залежності (CR, RPC), але не visits. 
-    Щоб прикинути spend і CAC — зворотно рахуємо visits через bounce rate (41.3% engaged) і три припущення CTR кнопки "Visit Site". 
-    Paid share 79.3% — з SimilarWeb (структура, не обсяг).
+  <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:720px;margin-bottom:24px;">
+    Маємо три числа з відкритих джерел: <strong style="color:var(--text)">81,136 visits/міс</strong> (SimilarWeb), 
+    <strong style="color:var(--text)">79.3% paid</strong> (SimilarWeb), 
+    <strong style="color:var(--text)">$740 CPA</strong> (середня виплата за продаж з датасету — єдине що беру звідти). 
+    Далі три математичних кроки.
   </p>
 
+  <!-- STEP BY STEP -->
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--bdim);border:1px solid rgba(74,158,255,.3);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:var(--blue);flex-shrink:0;">1</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;">Рахуємо spend</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;">
+          paid_visits = 81,136 × 79.3% = <strong style="color:var(--blue)">64,341</strong><br>
+          spend = paid_visits × CPC<br>
+          <span style="color:var(--amber)">@ $1.20 → $77,209 &nbsp;&nbsp; @ $2.00 → $128,682 &nbsp;&nbsp; @ $2.50 → $160,852</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--bdim);border:1px solid rgba(74,158,255,.3);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:var(--blue);flex-shrink:0;">2</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;">Скільки продажів треба щоб покрити spend</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;">
+          needed_sales = spend / $740<br>
+          <span style="color:var(--amber)">@ $1.20 → 104 продажі (0.16% від paid) &nbsp;&nbsp; @ $2.00 → 174 (0.27%) &nbsp;&nbsp; @ $2.50 → 217 (0.34%)</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--bdim);border:1px solid rgba(74,158,255,.3);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:var(--blue);flex-shrink:0;">3</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;">При якому CTR нам вистачить кліків на ці продажі</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;">
+          engaged = 64,341 × (1 − 58.7%) = <strong style="color:var(--blue)">26,573</strong><br>
+          break-even CTR = needed_sales / engaged<br>
+          <span style="color:var(--green)">@ $1.20 → 0.4% &nbsp;&nbsp; @ $2.00 → 0.7% &nbsp;&nbsp; @ $2.50 → 0.8%</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WIDE TABLE -->
   <div style="overflow-x:auto;">
-  <table>
+  <table style="min-width:900px;">
     <thead>
       <tr>
-        <th style="text-align:left">Показник</th>
-        <th>CTR 8%</th>
-        <th>CTR 15%</th>
-        <th>CTR 20%</th>
+        <th style="text-align:left">CPC</th>
+        <th>Paid visits</th>
+        <th>Spend</th>
+        <th>Needed sales</th>
+        <th>% від paid</th>
+        <th>Engaged (41.3%)</th>
+        <th>Break-even CTR</th>
+        <th>Кліки @ 8%</th>
+        <th>Кліки @ 15%</th>
+        <th>Кліки @ 20%</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Implied трафік</td></tr>
       <tr>
-        <td>Implied visits</td>
-        <td class="mono">2,142,131</td>
-        <td class="mono">1,142,470</td>
-        <td class="mono">856,852</td>
+        <td><strong>$1.20</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono v-amber">$77,209</td>
+        <td class="mono">104</td>
+        <td class="mono">0.16%</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-green"><strong>0.4%</strong></td>
+        <td class="mono v-green">2,126 ✓</td>
+        <td class="mono v-green">3,986 ✓</td>
+        <td class="mono v-green">5,315 ✓</td>
       </tr>
       <tr>
-        <td>Paid visits (79.3%)</td>
-        <td class="mono">1,698,710</td>
-        <td class="mono">905,978</td>
-        <td class="mono">679,484</td>
-      </tr>
-      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Spend (місяць)</td></tr>
-      <tr>
-        <td>@ CPC $1.20</td>
-        <td class="mono v-red">$2,038,452</td>
-        <td class="mono v-red">$1,087,174</td>
-        <td class="mono v-red">$815,381</td>
-      </tr>
-      <tr>
-        <td>@ CPC $1.80</td>
-        <td class="mono v-red">$3,057,677</td>
-        <td class="mono v-red">$1,630,761</td>
-        <td class="mono v-red">$1,223,071</td>
+        <td><strong>$2.00</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono v-amber">$128,682</td>
+        <td class="mono">174</td>
+        <td class="mono">0.27%</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-amber"><strong>0.7%</strong></td>
+        <td class="mono v-green">2,126 ✓</td>
+        <td class="mono v-green">3,986 ✓</td>
+        <td class="mono v-green">5,315 ✓</td>
       </tr>
       <tr>
-        <td>@ CPC $2.50</td>
-        <td class="mono v-red">$4,246,774</td>
-        <td class="mono v-red">$2,264,946</td>
-        <td class="mono v-red">$1,698,710</td>
-      </tr>
-      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Revenue (з датасету, реальний)</td></tr>
-      <tr>
-        <td>Revenue / міс</td>
-        <td class="mono v-green">$364,010</td>
-        <td class="mono v-green">$364,010</td>
-        <td class="mono v-green">$364,010</td>
-      </tr>
-      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">ROAS</td></tr>
-      <tr>
-        <td>ROAS @ $1.20</td>
-        <td class="mono v-red">0.18x</td>
-        <td class="mono v-red">0.33x</td>
-        <td class="mono v-red">0.45x</td>
-      </tr>
-      <tr>
-        <td>ROAS @ $1.80</td>
-        <td class="mono v-red">0.12x</td>
-        <td class="mono v-red">0.22x</td>
-        <td class="mono v-red">0.30x</td>
-      </tr>
-      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">CAC і EPC</td></tr>
-      <tr>
-        <td>CAC @ $1.80</td>
-        <td class="mono v-red">$6,240</td>
-        <td class="mono v-red">$3,328</td>
-        <td class="mono v-red">$2,496</td>
-      </tr>
-      <tr>
-        <td>EPC (revenue / click)</td>
-        <td class="mono v-green">$5.14</td>
-        <td class="mono v-green">$5.14</td>
-        <td class="mono v-green">$5.14</td>
-      </tr>
-      <tr>
-        <td><strong>Break-even CPC</strong></td>
-        <td class="mono v-amber"><strong>$0.21</strong></td>
-        <td class="mono v-amber"><strong>$0.40</strong></td>
-        <td class="mono v-amber"><strong>$0.54</strong></td>
+        <td><strong>$2.50</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono v-red">$160,852</td>
+        <td class="mono">217</td>
+        <td class="mono">0.34%</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-amber"><strong>0.8%</strong></td>
+        <td class="mono v-green">2,126 ✓</td>
+        <td class="mono v-green">3,986 ✓</td>
+        <td class="mono v-green">5,315 ✓</td>
       </tr>
     </tbody>
   </table>
   </div>
 
-  <div style="background:var(--rdim);border:1px solid rgba(255,95,95,.2);border-radius:8px;padding:14px 18px;margin-top:14px;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Висновок</div>
-    <p style="font-size:13px;color:#ffaaaa;line-height:1.65;">
-      У всіх трьох сценаріях збитково при ринковому CPC $1.20–2.50. 
-      Break-even CPC максимально <strong>$0.54</strong> — тобто потрібен трафік в 2-5x дешевший за ринок, 
-      або потрібно кратно покращити CR на сайті. 
-      CAC при $1.80 і CTR 20% = <strong>$2,496</strong> при CPA виплаті $743 — збиток $1,753 на кожен продаж. 
-      Саме тому продуктові механіки (завдання 02) — не nice-to-have, а умова виживання при платній закупівлі.
+  <div style="background:var(--gdim);border:1px solid rgba(46,204,113,.2);border-radius:8px;padding:14px 18px;margin-top:14px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Висновок</div>
+    <p style="font-size:13px;color:#a8e6c0;line-height:1.65;">
+      Break-even CTR навіть при найдорожчому CPC $2.50 = лише <strong>0.8%</strong>. 
+      Тобто достатньо щоб менше 1% engaged visitors клікнули на партнера і дійшли до продажу. 
+      При будь-якому сценарії CTR 8–20% кліків більш ніж достатньо. 
+      <strong>Проблема не в кількості кліків — проблема в конверсії кліків у продажі</strong>, 
+      і саме тут продуктові механіки (завдання 02) вирішують задачу.
     </p>
   </div>
 </div>
-<!-- SECTION 5: ASSUMPTIONS -->
+
 <div class="section">
   <div class="section-title">
     <div class="dot" style="background:var(--muted)"></div>
