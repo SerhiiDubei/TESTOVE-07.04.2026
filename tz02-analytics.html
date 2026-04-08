@@ -423,5 +423,114 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
     </p>
   </div>
 </div>
+<div class="section">
+  <div class="section-title">
+    <div class="dot" style="background:var(--blue)"></div>
+    Unit Economics — воронка від трафіку до продажу
+  </div>
+
+  <!-- FUNNEL STEPS -->
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-bottom:24px;overflow-x:auto;">
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px 0 0 10px;padding:14px 16px;text-align:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">1 · Page visits</div>
+      <div style="font-size:18px;font-weight:800;color:var(--text)">81,136</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:3px">всього / міс</div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-left:none;padding:14px 16px;text-align:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">2 · Paid visits</div>
+      <div style="font-size:18px;font-weight:800;color:var(--amber)">64,341</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:3px">79.3% платні</div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-left:none;padding:14px 16px;text-align:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">3 · Engaged</div>
+      <div style="font-size:18px;font-weight:800;color:var(--amber)">26,573</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:3px">41.3% не bounce</div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-left:none;padding:14px 16px;text-align:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">4 · Clicks</div>
+      <div style="font-size:18px;font-weight:800;color:var(--blue)">?</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:3px">engaged × CTR</div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-left:none;padding:14px 16px;text-align:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">5 · Sales</div>
+      <div style="font-size:18px;font-weight:800;color:var(--blue)">?</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:3px">clicks × CR</div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-left:none;border-radius:0 10px 10px 0;padding:14px 16px;text-align:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">6 · Revenue</div>
+      <div style="font-size:18px;font-weight:800;color:var(--green)">sales × $740</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:3px">CPA виплата</div>
+    </div>
+
+  </div>
+
+  <!-- KEY INSIGHT -->
+  <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:720px;margin-bottom:20px;">
+    Кроки 4 і 5 невідомі без внутрішньої аналітики. Але можна зайти з іншого боку — 
+    <strong style="color:var(--text)">скільки продажів потрібно щоб покрити spend, і який сукупний CTR це забезпечить</strong>:
+  </p>
+
+  <!-- TABLE -->
+  <div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align:left">CPC</th>
+        <th>Paid visits</th>
+        <th>Engaged</th>
+        <th>Spend<br><span style="font-weight:400;color:var(--muted)">(paid × CPC)</span></th>
+        <th>Needed sales<br><span style="font-weight:400;color:var(--muted)">(spend / $740)</span></th>
+        <th>% від paid</th>
+        <th style="color:var(--green)">Break-even CTR<br><span style="font-weight:400;color:var(--muted)">(sales / engaged)</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>$1.20</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-amber">$77,209</td>
+        <td class="mono">104</td>
+        <td class="mono">0.16%</td>
+        <td class="mono v-green"><strong>0.39%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>$2.00</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-amber">$128,682</td>
+        <td class="mono">174</td>
+        <td class="mono">0.27%</td>
+        <td class="mono v-amber"><strong>0.65%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>$2.50</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-red">$160,852</td>
+        <td class="mono">217</td>
+        <td class="mono">0.34%</td>
+        <td class="mono v-red"><strong>0.82%</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div style="background:var(--gdim);border:1px solid rgba(46,204,113,.2);border-radius:8px;padding:14px 18px;margin-top:14px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Ключовий інсайт</div>
+    <p style="font-size:13px;color:#a8e6c0;line-height:1.65;">
+      Break-even CTR при $2.00 CPC = <strong>0.65%</strong> від engaged visitors. 
+      Це вся воронка разом: клік на партнера × реєстрація × покупка. 
+      Підняти цей сукупний показник на десяті відсотка — і сайт прибутковий. 
+      Саме це вирішують продуктові механіки у завданні 02.
+    </p>
+  </div>
+</div>
 </body>
 </html>
