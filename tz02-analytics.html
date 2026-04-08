@@ -320,5 +320,108 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
   </div>
 </div>
 
+<div class="section">
+  <div class="section-title">
+    <div class="dot" style="background:var(--blue)"></div>
+    Покрокова логіка — від трафіку до break-even CTR
+  </div>
+  <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:720px;margin-bottom:24px;">
+    Маємо три числа: <strong style="color:var(--text)">81,136 visits/міс</strong>, <strong style="color:var(--text)">79.3% paid</strong>, <strong style="color:var(--text)">$740 CPA</strong>. Три кроки.
+  </p>
+
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 20px;display:grid;grid-template-columns:28px 1fr;gap:14px;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--bdim);border:1px solid rgba(74,158,255,.3);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--blue);flex-shrink:0;">1</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;">Рахуємо spend</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;">
+          paid_visits = 81,136 × 79.3% = <span style="color:var(--blue)">64,341</span><br>
+          engaged = 64,341 × (1 − 58.7%) = <span style="color:var(--blue)">26,573</span><br>
+          spend = paid_visits × CPC
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 20px;display:grid;grid-template-columns:28px 1fr;gap:14px;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--bdim);border:1px solid rgba(74,158,255,.3);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--blue);flex-shrink:0;">2</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;">Скільки продажів треба щоб покрити spend</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;">
+          needed_sales = spend / $740<br>
+          <span style="color:var(--amber)">@ $1.20 → 104 &nbsp;&nbsp; @ $2.00 → 174 &nbsp;&nbsp; @ $2.50 → 217</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 20px;display:grid;grid-template-columns:28px 1fr;gap:14px;">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--bdim);border:1px solid rgba(74,158,255,.3);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--blue);flex-shrink:0;">3</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;">Ключовий інсайт — який CTR потрібен щоб забезпечити ці продажі</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);line-height:1.8;">
+          needed_CTR = needed_sales / engaged<br>
+          Це <em>вся воронка разом</em>: CTR кнопки × CR на сайті партнера<br>
+          <span style="color:var(--green)">@ $1.20 → 0.39% &nbsp;&nbsp; @ $2.00 → 0.65% &nbsp;&nbsp; @ $2.50 → 0.82%</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="overflow-x:auto;">
+  <table style="min-width:700px;">
+    <thead>
+      <tr>
+        <th style="text-align:left">CPC</th>
+        <th>Paid visits</th>
+        <th>Engaged</th>
+        <th>Spend</th>
+        <th>Needed sales</th>
+        <th>% від paid</th>
+        <th style="color:var(--green)">Break-even CTR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>$1.20</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-amber">$77,209</td>
+        <td class="mono">104</td>
+        <td class="mono">0.16%</td>
+        <td class="mono v-green"><strong>0.39%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>$2.00</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-amber">$128,682</td>
+        <td class="mono">174</td>
+        <td class="mono">0.27%</td>
+        <td class="mono v-amber"><strong>0.65%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>$2.50</strong></td>
+        <td class="mono">64,341</td>
+        <td class="mono">26,573</td>
+        <td class="mono v-red">$160,852</td>
+        <td class="mono">217</td>
+        <td class="mono">0.34%</td>
+        <td class="mono v-red"><strong>0.82%</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div style="background:var(--gdim);border:1px solid rgba(46,204,113,.2);border-radius:8px;padding:14px 18px;margin-top:14px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Ключовий інсайт</div>
+    <p style="font-size:13px;color:#a8e6c0;line-height:1.65;">
+      Break-even CTR при $2.00 CPC = <strong>0.65%</strong> від engaged visitors. 
+      Це не CTR кнопки окремо — це вся воронка: клік × реєстрація × покупка. 
+      Якщо підняти цей сукупний CR навіть на десяті відсотка — сайт стає прибутковим. 
+      Саме це і вирішують продуктові механіки у завданні 02.
+    </p>
+  </div>
+</div>
 </body>
 </html>
