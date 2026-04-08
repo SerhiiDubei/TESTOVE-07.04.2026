@@ -143,56 +143,24 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 
 <div class="task-summary">
   <div class="task-summary-inner">
-    <div class="task-summary-top">
-      <span class="task-num">Завдання 02 · Аналітика</span>
-    </div>
+    <div class="task-summary-top"><span class="task-num">Завдання 02 · Аналітика</span></div>
     <p class="task-summary-text">
-      З публічно доступних джерел є дані SimilarWeb — 81 тисяча відвідувачів за березень 2026, з яких 79% платний пошук і лише 3.4% органіка. Теоретично можна було б достати глибші дані через платні інструменти або outgoing traffic по партнерах, але більшість з них не показують реферал через redirect без передачі referrer. Тому unit economics я будував на базі реального датасету з третього завдання — він дає CR і RPC які важливіші за трафікові цифри.
+      З публічних джерел маю SimilarWeb — 81K відвідувачів за березень 2026, 79% платний пошук, bounce rate 58.7%. Глибші дані (CTR на партнера, внутрішні конверсії) публічно недоступні через redirect без referrer. Тому для unit economics використовував датасет з третього завдання виключно як джерело залежностей — CR і RPC, але не як абсолютні обсяги.
       <br><br>
-      Головний інсайт: при CPC $1.80 для dating-ніші в США максимальний беззбитковий CPC = $0.53 — тобто при поточних конверсіях воронка збиткова в будь-якому сценарії. Це не означає що сайт не заробляє — він заробляє на органіці та прямому трафіку. Але масштабувати платну закупівлю без покращення CR немає сенсу.
+      Методологія: зафіксував три сценарії CTR кнопки "Visit Site" (8% / 15% / 20%), через bounce rate зворотно порахував implied visits і paid spend, і порівняв з реальним revenue з датасету. Break-even CPC у найкращому сценарії — $0.54, тоді як ринок стоїть $1.20–2.50. Висновок: без покращення CR на сайті масштабувати платну закупівлю збитково при будь-якому сценарії.
     </p>
     <div class="real-data-grid">
-      <div class="rdi">
-        <div class="rdi-label">Visits / міс</div>
-        <div class="rdi-val a">81,136</div>
-        <div class="rdi-sub">SimilarWeb, берез. 2026</div>
-      </div>
-      <div class="rdi">
-        <div class="rdi-label">Paid Search</div>
-        <div class="rdi-val r">79.3%</div>
-        <div class="rdi-sub">Органіка лише 3.4%</div>
-      </div>
-      <div class="rdi">
-        <div class="rdi-label">Bounce Rate</div>
-        <div class="rdi-val r">58.7%</div>
-        <div class="rdi-sub">Session 1:12 хв</div>
-      </div>
-      <div class="rdi">
-        <div class="rdi-label">Max беззбитк. CPC</div>
-        <div class="rdi-val r">$0.53</div>
-        <div class="rdi-sub">При поточних CR</div>
-      </div>
-      <div class="rdi">
-        <div class="rdi-label">Revenue / міс (pred.)</div>
-        <div class="rdi-val g">~$34K</div>
-        <div class="rdi-sub">З датасету: RPC $5.14</div>
-      </div>
-      <div class="rdi">
-        <div class="rdi-label">CPA per sale</div>
-        <div class="rdi-val">~$743</div>
-        <div class="rdi-sub">З датасету (реальний)</div>
-      </div>
-      <div class="rdi">
-        <div class="rdi-label">CR click → sale</div>
-        <div class="rdi-val">0.69%</div>
-        <div class="rdi-sub">З датасету (реальний)</div>
-      </div>
-      <div class="rdi">
-        <div class="rdi-label">ROAS @ $1.80 CPC</div>
-        <div class="rdi-val r">0.29x</div>
-        <div class="rdi-sub">Збитковий без оптимізації</div>
-      </div>
+      <div class="rdi"><div class="rdi-label">Visits / міс</div><div class="rdi-val a">81,136</div><div class="rdi-sub">SimilarWeb, берез. 2026</div></div>
+      <div class="rdi"><div class="rdi-label">Paid Search</div><div class="rdi-val r">79.3%</div><div class="rdi-sub">Органіка лише 3.4%</div></div>
+      <div class="rdi"><div class="rdi-label">Bounce Rate</div><div class="rdi-val r">58.7%</div><div class="rdi-sub">Engaged 41.3%</div></div>
+      <div class="rdi"><div class="rdi-label">Кліки на партнерів</div><div class="rdi-val g">70,776</div><div class="rdi-sub">З датасету (1 міс)</div></div>
+      <div class="rdi"><div class="rdi-label">Revenue / міс</div><div class="rdi-val g">$364,010</div><div class="rdi-sub">З датасету (реальний)</div></div>
+      <div class="rdi"><div class="rdi-label">EPC</div><div class="rdi-val g">$5.14</div><div class="rdi-sub">Revenue per click</div></div>
+      <div class="rdi"><div class="rdi-label">Break-even CPC</div><div class="rdi-val r">$0.21–0.54</div><div class="rdi-sub">Залежно від CTR</div></div>
+      <div class="rdi"><div class="rdi-label">Ринковий CPC</div><div class="rdi-val r">$1.20–2.50</div><div class="rdi-sub">Dating US, Google Ads</div></div>
     </div>
+  </div>
+</div>
   </div>
 </div>
 </div>
@@ -385,82 +353,115 @@ hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
   </table>
 </div>
 
-<!-- SECTION 4: PREDICTION SCENARIOS -->
+
 <div class="section">
   <div class="section-title">
     <div class="dot" style="background:var(--purple)"></div>
-    Prediction — 3 сценарії закупівлі (місяць)
+    3 сценарії CTR — implied visits → spend → CAC → порівняння з EPC
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.6;">
+    <strong style="color:var(--text)">Методологія:</strong> датасет дає залежності (CR, RPC), але не visits. 
+    Щоб прикинути spend і CAC — зворотно рахуємо visits через bounce rate (41.3% engaged) і три припущення CTR кнопки "Visit Site". 
+    Paid share 79.3% — з SimilarWeb (структура, не обсяг).
+  </p>
+
+  <div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align:left">Показник</th>
+        <th>CTR 8%</th>
+        <th>CTR 15%</th>
+        <th>CTR 20%</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Implied трафік</td></tr>
+      <tr>
+        <td>Implied visits</td>
+        <td class="mono">2,142,131</td>
+        <td class="mono">1,142,470</td>
+        <td class="mono">856,852</td>
+      </tr>
+      <tr>
+        <td>Paid visits (79.3%)</td>
+        <td class="mono">1,698,710</td>
+        <td class="mono">905,978</td>
+        <td class="mono">679,484</td>
+      </tr>
+      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Spend (місяць)</td></tr>
+      <tr>
+        <td>@ CPC $1.20</td>
+        <td class="mono v-red">$2,038,452</td>
+        <td class="mono v-red">$1,087,174</td>
+        <td class="mono v-red">$815,381</td>
+      </tr>
+      <tr>
+        <td>@ CPC $1.80</td>
+        <td class="mono v-red">$3,057,677</td>
+        <td class="mono v-red">$1,630,761</td>
+        <td class="mono v-red">$1,223,071</td>
+      </tr>
+      <tr>
+        <td>@ CPC $2.50</td>
+        <td class="mono v-red">$4,246,774</td>
+        <td class="mono v-red">$2,264,946</td>
+        <td class="mono v-red">$1,698,710</td>
+      </tr>
+      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Revenue (з датасету, реальний)</td></tr>
+      <tr>
+        <td>Revenue / міс</td>
+        <td class="mono v-green">$364,010</td>
+        <td class="mono v-green">$364,010</td>
+        <td class="mono v-green">$364,010</td>
+      </tr>
+      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">ROAS</td></tr>
+      <tr>
+        <td>ROAS @ $1.20</td>
+        <td class="mono v-red">0.18x</td>
+        <td class="mono v-red">0.33x</td>
+        <td class="mono v-red">0.45x</td>
+      </tr>
+      <tr>
+        <td>ROAS @ $1.80</td>
+        <td class="mono v-red">0.12x</td>
+        <td class="mono v-red">0.22x</td>
+        <td class="mono v-red">0.30x</td>
+      </tr>
+      <tr><td colspan="4" style="padding:6px 10px;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">CAC і EPC</td></tr>
+      <tr>
+        <td>CAC @ $1.80</td>
+        <td class="mono v-red">$6,240</td>
+        <td class="mono v-red">$3,328</td>
+        <td class="mono v-red">$2,496</td>
+      </tr>
+      <tr>
+        <td>EPC (revenue / click)</td>
+        <td class="mono v-green">$5.14</td>
+        <td class="mono v-green">$5.14</td>
+        <td class="mono v-green">$5.14</td>
+      </tr>
+      <tr>
+        <td><strong>Break-even CPC</strong></td>
+        <td class="mono v-amber"><strong>$0.21</strong></td>
+        <td class="mono v-amber"><strong>$0.40</strong></td>
+        <td class="mono v-amber"><strong>$0.54</strong></td>
+      </tr>
+    </tbody>
+  </table>
   </div>
 
-  <div class="scenario-wrap">
-    <div class="scenario">
-      <div class="scenario-head">
-        <div class="scenario-name">Conservative</div>
-        <div class="scenario-cpc">CPC $1.20 · низька конкуренція</div>
-      </div>
-      <div class="scenario-body">
-        <div class="sc-row"><span class="sc-key">Paid visits/міс</span><span class="sc-val">64,315</span></div>
-        <div class="sc-row"><span class="sc-key">Spend</span><span class="sc-val red-text">$77,178</span></div>
-        <div class="sc-row"><span class="sc-key">Clicks to partners</span><span class="sc-val">~6,639</span></div>
-        <div class="sc-row"><span class="sc-key">Leads (reg)</span><span class="sc-val">~388</span></div>
-        <div class="sc-row"><span class="sc-key">Sales (FTD)</span><span class="sc-val">~46</span></div>
-        <div class="sc-row"><span class="sc-key">Revenue</span><span class="sc-val green-text">$34,146</span></div>
-        <div class="sc-row"><span class="sc-key">Profit</span><span class="sc-val red-text">-$43,032</span></div>
-        <div class="sc-row"><span class="sc-key">ROAS</span><span class="sc-val roas-bad">0.44x</span></div>
-        <div class="sc-row"><span class="sc-key">CAC</span><span class="sc-val red-text">$1,678</span></div>
-      </div>
-    </div>
-
-    <div class="scenario base">
-      <div class="scenario-head">
-        <div class="scenario-name">Base ★</div>
-        <div class="scenario-cpc">CPC $1.80 · поточний ринок</div>
-      </div>
-      <div class="scenario-body">
-        <div class="sc-row"><span class="sc-key">Paid visits/міс</span><span class="sc-val">64,315</span></div>
-        <div class="sc-row"><span class="sc-key">Spend</span><span class="sc-val red-text">$115,767</span></div>
-        <div class="sc-row"><span class="sc-key">Clicks to partners</span><span class="sc-val">~6,639</span></div>
-        <div class="sc-row"><span class="sc-key">Leads (reg)</span><span class="sc-val">~388</span></div>
-        <div class="sc-row"><span class="sc-key">Sales (FTD)</span><span class="sc-val">~46</span></div>
-        <div class="sc-row"><span class="sc-key">Revenue</span><span class="sc-val green-text">$34,146</span></div>
-        <div class="sc-row"><span class="sc-key">Profit</span><span class="sc-val red-text">-$81,621</span></div>
-        <div class="sc-row"><span class="sc-key">ROAS</span><span class="sc-val roas-bad">0.29x</span></div>
-        <div class="sc-row"><span class="sc-key">CAC</span><span class="sc-val red-text">$2,517</span></div>
-      </div>
-    </div>
-
-    <div class="scenario">
-      <div class="scenario-head">
-        <div class="scenario-name">Aggressive</div>
-        <div class="scenario-cpc">CPC $2.50 · висока конкуренція</div>
-      </div>
-      <div class="scenario-body">
-        <div class="sc-row"><span class="sc-key">Paid visits/міс</span><span class="sc-val">64,315</span></div>
-        <div class="sc-row"><span class="sc-key">Spend</span><span class="sc-val red-text">$160,788</span></div>
-        <div class="sc-row"><span class="sc-key">Clicks to partners</span><span class="sc-val">~6,639</span></div>
-        <div class="sc-row"><span class="sc-key">Leads (reg)</span><span class="sc-val">~388</span></div>
-        <div class="sc-row"><span class="sc-key">Sales (FTD)</span><span class="sc-val">~46</span></div>
-        <div class="sc-row"><span class="sc-key">Revenue</span><span class="sc-val green-text">$34,146</span></div>
-        <div class="sc-row"><span class="sc-key">Profit</span><span class="sc-val red-text">-$126,642</span></div>
-        <div class="sc-row"><span class="sc-key">ROAS</span><span class="sc-val roas-bad">0.21x</span></div>
-        <div class="sc-row"><span class="sc-key">CAC</span><span class="sc-val red-text">$3,497</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="insight-box">
-    <div class="insight-title">Ключовий інсайт</div>
-    <div class="insight-text">
-      У всіх сценаріях ROAS &lt;1 — це означає що при поточних CR і RPC, платна закупівля збиткова.
-      Причина: Bounce rate 58.7% + низький CTR на партнера вбивають воронку ще на вході.
-      Щоб вийти на ROAS 1x при CPC $1.80, потрібно або збільшити RPC до ~$17.4,
-      або підняти CTR на партнера з 25% до 75%, або знизити bounce rate вдвічі.
-      <br><br>
-      Саме тому продуктові механіки (завдання 02) критичні — без них Google Ads масштабувати неможливо.
-    </div>
+  <div style="background:var(--rdim);border:1px solid rgba(255,95,95,.2);border-radius:8px;padding:14px 18px;margin-top:14px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Висновок</div>
+    <p style="font-size:13px;color:#ffaaaa;line-height:1.65;">
+      У всіх трьох сценаріях збитково при ринковому CPC $1.20–2.50. 
+      Break-even CPC максимально <strong>$0.54</strong> — тобто потрібен трафік в 2-5x дешевший за ринок, 
+      або потрібно кратно покращити CR на сайті. 
+      CAC при $1.80 і CTR 20% = <strong>$2,496</strong> при CPA виплаті $743 — збиток $1,753 на кожен продаж. 
+      Саме тому продуктові механіки (завдання 02) — не nice-to-have, а умова виживання при платній закупівлі.
+    </p>
   </div>
 </div>
-
 <!-- SECTION 5: ASSUMPTIONS -->
 <div class="section">
   <div class="section-title">
